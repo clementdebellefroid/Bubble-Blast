@@ -32,7 +32,7 @@ public class EcranAccueil extends NewJFrame{
 
 		accueilPanel.add(unJoueur);
 		accueilPanel.add(deuxJoueurs);
-		this.getContentPane().add(accueilPanel);		
+		this.add(accueilPanel);		
 		
 		unJoueur.addActionListener(new ActionListener() {
 		       public void actionPerformed(ActionEvent evt) {
