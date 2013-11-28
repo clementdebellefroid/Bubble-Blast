@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-public class EcranJeu extends NewJFrame{
+public class EcranJeu extends NouvelleFenetre{
 	private JPanel jPanel1;
 	private JPanel infoJeu;
 	private JTextField Score;
@@ -28,6 +28,7 @@ public class EcranJeu extends NewJFrame{
 	private static MesJButton[][] tabJButton = new MesJButton[nbColonnes][nbLignes];
 	
 	public EcranJeu() {
+		super();
 		initGUI();
 	}
 	
@@ -36,8 +37,9 @@ public class EcranJeu extends NewJFrame{
 		    this.setLocationRelativeTo(null);
 			this.setVisible(true);
 		    this.setResizable(false);
+
 			{			
-			 	BorderLayout thisLayout = new BorderLayout();
+			 BorderLayout thisLayout = new BorderLayout();
 				setLayout(thisLayout);
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1, BorderLayout.SOUTH);
@@ -49,9 +51,9 @@ public class EcranJeu extends NewJFrame{
 				jPanel1.setLayout(jPanel1Layout);
 				jPanel1.setBackground(new java.awt.Color(255,255,255));
 				jPanel1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-				jPanel1.setSize(nbColonnes*largeur, nbLignes*hauteur);
+				//jPanel1.setSize(nbColonnes*largeur, nbLignes*hauteur);
 			    //jPanel1.setPreferredSize(new java.awt.Dimension(nbColonnes*largeur, nbLignes*hauteur));
-				jPanel1.setPreferredSize(new java.awt.Dimension(350, 250));
+				//jPanel1.setPreferredSize(new java.awt.Dimension(350, 250));
 				for(int i=0; i<nbColonnes; i++)
 				{
 					for(int j=0; j<nbLignes; j++)
@@ -108,7 +110,6 @@ public class EcranJeu extends NewJFrame{
 			}
 			pack();
 		//	this.setSize(nbColonnes*largeur, nbLignes*hauteur);
-			this.setSize(320, 320);
 		} catch (Exception e) {
 		    //add your error handling code here
 			//e.printStackTrace();

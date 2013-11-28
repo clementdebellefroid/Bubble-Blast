@@ -1,5 +1,5 @@
 package bubble_blast;
 
-public class EcranNbParties extends NewJFrame{
+public class EcranNbParties extends NouvelleFenetre{
 
 }

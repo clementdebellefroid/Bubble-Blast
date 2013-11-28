@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class EcranAccueil extends NewJFrame{
+public class EcranAccueil extends NouvelleFenetre{
 	
 	private JPanel accueilPanel;
 	private JButton unJoueur;
