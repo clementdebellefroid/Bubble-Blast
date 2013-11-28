@@ -29,17 +29,14 @@ public class EcranJeu extends NouvelleFenetre{
 	
 	public EcranJeu() {
 		super();
-		initGUI();
+		initFenetre();
 	}
 	
-	private void initGUI() {
-		try {
-		    this.setLocationRelativeTo(null);
-			this.setVisible(true);
-		    this.setResizable(false);
-
-			{			
-			 BorderLayout thisLayout = new BorderLayout();
+	private void initFenetre() {
+	    this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		
+		BorderLayout thisLayout = new BorderLayout();
 				setLayout(thisLayout);
 				jPanel1 = new JPanel();
 				getContentPane().add(jPanel1, BorderLayout.SOUTH);
@@ -63,7 +60,7 @@ public class EcranJeu extends NouvelleFenetre{
 						tabJButton[i][j].setSize(23, 23);
 						tabJButton[i][j].setPreferredSize(new java.awt.Dimension(30, 30));
 						tabJButton[i][j].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
-						tabJButton[i][j].setBorderPainted(false);
+						//tabJButton[i][j].setBorderPainted(false);
 						tabJButton[i][j].addActionListener(new ActionListener() {
 						       public void actionPerformed(ActionEvent evt) {
 						        jButton1ActionPerformed(evt);
@@ -107,13 +104,6 @@ public class EcranJeu extends NouvelleFenetre{
 					Touches.setPreferredSize(new java.awt.Dimension(100, 25));
 					Touches.setCaretColor(new java.awt.Color(0,0,0));
 				}
-			}
-			pack();
-		//	this.setSize(nbColonnes*largeur, nbLignes*hauteur);
-		} catch (Exception e) {
-		    //add your error handling code here
-			//e.printStackTrace();
-		}
 	}
 	
 	public static MesJButton[][] getTabJButton() {

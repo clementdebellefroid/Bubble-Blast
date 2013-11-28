@@ -17,7 +17,6 @@ public class NouvelleFenetre extends javax.swing.JFrame {
 		this.setTitle("Bubble Blast");
 		setBackground(new java.awt.Color(255,255,255));
 		this.setIconImage(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")).getImage());	
-		pack();
 		this.setSize(500, 500);	
 	}
 }

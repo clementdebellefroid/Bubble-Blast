@@ -1,36 +1,46 @@
 package bubble_blast;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
+import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import java.awt.Component;
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
 
 public class EcranAccueil extends NouvelleFenetre{
 	
-	private JPanel accueilPanel;
-	private JButton unJoueur;
-	private JButton deuxJoueurs;
+	//private JPanel accueilPanel;
+	//private JButton unJoueur;
+	//private JButton deuxJoueurs;
 	
 	public EcranAccueil(){
+		super();
 		initFenetre();
 	}
 	
 	public void initFenetre(){
 	    this.setLocationRelativeTo(null);
 		this.setVisible(true);
-	    this.setResizable(false);
+		
+		JPanel accueilPanel = new JPanel();
+	    accueilPanel.setLayout(new BoxLayout(accueilPanel, BoxLayout.Y_AXIS));
 	    
-		accueilPanel = new JPanel();
-		unJoueur = new JButton("1 joueur");
-		unJoueur.setPreferredSize(new java.awt.Dimension(100, 50));
-		deuxJoueurs = new JButton("2 joueurs");
-		deuxJoueurs.setPreferredSize(new java.awt.Dimension(100, 50));
+	    JButton unJoueur = new JButton("1 joueur");
+		unJoueur.setMaximumSize(new Dimension(160, 80));
+		unJoueur.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		JButton deuxJoueurs = new JButton("2 joueurs");
+		deuxJoueurs.setMaximumSize(new Dimension(160, 80));
+		deuxJoueurs.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+		accueilPanel.add(Box.createRigidArea(new Dimension(0,250)));
 		accueilPanel.add(unJoueur);
+		accueilPanel.add(Box.createRigidArea(new Dimension(0,20)));
 		accueilPanel.add(deuxJoueurs);
 		this.add(accueilPanel);		
 		
