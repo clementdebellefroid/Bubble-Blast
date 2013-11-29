@@ -1,120 +1,108 @@
 package bubble_blast;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 public class EcranJeu extends NouvelleFenetre{
-	private JPanel jPanel1;
-	private JPanel infoJeu;
-	private JTextField Score;
-	private JTextField Niveau;
-	private JTextField Touches;
+	private JTextField scoreTxt;
+	private JTextField niveauTxt;
+	private JTextField touchesTxt;
 	private static int nbColonnes = 5;
 	private static int nbLignes = 6;
-	private int largeur = 23;
-	private int hauteur = 23;
+	private int tailleCoteBouton = 60;
 	private static MesJButton[][] tabJButton = new MesJButton[nbColonnes][nbLignes];
-	
+
 	public EcranJeu() {
 		super();
 		initFenetre();
 	}
-	
+
 	private void initFenetre() {
-	    this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+
+		JPanel mainPanel = new JPanel();
+		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+		JPanel infoPanel = new JPanel();
+		infoPanel.setBackground(new Color(130,200,255));
+		infoPanel.setPreferredSize(new Dimension(500,100));
+
+		JLabel niveauLabel = new JLabel("Niveau:");
+		niveauTxt = new JTextField();
+		niveauTxt.setEditable(false);
+		niveauTxt.setBackground(new Color(0,255,0));
+		niveauTxt.setPreferredSize(new Dimension(50, 30));
+
+		JLabel scoreLabel = new JLabel("Score:");
+		scoreTxt = new JTextField();
+		scoreTxt.setEditable(false);
+		scoreTxt.setBackground(new Color(0,255,0));
+		scoreTxt.setPreferredSize(new Dimension(130, 50));
+
+		JLabel touchesLabel = new JLabel("Touches:");
+		touchesTxt = new JTextField();
+		touchesTxt.setEditable(false);
+		touchesTxt.setBackground(new Color(0,255,0));
+		touchesTxt.setPreferredSize(new Dimension(50, 30));
+
+		infoPanel.add(niveauLabel);
+		infoPanel.add(niveauTxt);
+		infoPanel.add(scoreLabel);
+		infoPanel.add(scoreTxt);
+		infoPanel.add(touchesLabel);
+		infoPanel.add(touchesTxt);
+
+
+		JPanel grilleJeuPanel = new JPanel();
 		
-		BorderLayout thisLayout = new BorderLayout();
-				setLayout(thisLayout);
-				jPanel1 = new JPanel();
-				getContentPane().add(jPanel1, BorderLayout.SOUTH);
-				GridBagLayout jPanel1Layout = new GridBagLayout();
-				jPanel1Layout.columnWidths = new int[] {7, 20, 7, 7, 7};
-				jPanel1Layout.rowHeights = new int[] {1,1,1,1,1,1};
-				jPanel1Layout.columnWeights = new double[] {0.1, 0.1, 0.1, 0.1, 0.1};
-				jPanel1Layout.rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-				jPanel1.setLayout(jPanel1Layout);
-				jPanel1.setBackground(new java.awt.Color(255,255,255));
-				jPanel1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-				//jPanel1.setSize(nbColonnes*largeur, nbLignes*hauteur);
-			    //jPanel1.setPreferredSize(new java.awt.Dimension(nbColonnes*largeur, nbLignes*hauteur));
-				//jPanel1.setPreferredSize(new java.awt.Dimension(350, 250));
-				for(int i=0; i<nbColonnes; i++)
-				{
-					for(int j=0; j<nbLignes; j++)
-					{
-						tabJButton[i][j] = new MesJButton(i,j);
-						jPanel1.add(tabJButton[i][j], new GridBagConstraints(i, j, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-						tabJButton[i][j].setSize(23, 23);
-						tabJButton[i][j].setPreferredSize(new java.awt.Dimension(30, 30));
-						tabJButton[i][j].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
-						//tabJButton[i][j].setBorderPainted(false);
-						tabJButton[i][j].addActionListener(new ActionListener() {
-						       public void actionPerformed(ActionEvent evt) {
-						        jButton1ActionPerformed(evt);
-						       }
-						      });
-					}
-				}				
-			}
+		GridBagLayout grilleJeuPanelLayout = new GridBagLayout();
+		grilleJeuPanel.setLayout(grilleJeuPanelLayout);
+		grilleJeuPanel.setBackground(new Color(221,225,240));
+		grilleJeuPanel.setBorder(new LineBorder(new Color(66,95,184),1,false));
+		for(int c=0; c<nbColonnes; c++)
+		{
+			for(int l=0; l<nbLignes; l++)
 			{
-				infoJeu = new JPanel();
-				getContentPane().add(infoJeu, BorderLayout.WEST);
-				{
-					Score = new JTextField();
-					Niveau = new JTextField();
-					Touches = new JTextField();
-					infoJeu.add(Niveau);
-					infoJeu.add(Score);
-					infoJeu.add(Touches);
-					Niveau.setText("Niveau:");
-					Niveau.setBackground(new java.awt.Color(0,255,0));
-					Niveau.setEditable(false);
-					Niveau.setHorizontalAlignment(SwingConstants.CENTER);
-					Niveau.setSelectedTextColor(new java.awt.Color(255,255,255));
-					Niveau.setSelectionColor(new java.awt.Color(255,255,255));
-					Niveau.setPreferredSize(new java.awt.Dimension(100, 25));
-					Niveau.setCaretColor(new java.awt.Color(0,0,0));
-					Score.setText("Score:");
-					Score.setBackground(new java.awt.Color(0,255,0));
-					Score.setEditable(false);
-					Score.setHorizontalAlignment(SwingConstants.CENTER);
-					Score.setSelectedTextColor(new java.awt.Color(255,255,255));
-					Score.setSelectionColor(new java.awt.Color(255,255,255));
-					Score.setPreferredSize(new java.awt.Dimension(100, 25));
-					Score.setCaretColor(new java.awt.Color(0,0,0));
-					Touches.setText("Touches:");
-					Touches.setBackground(new java.awt.Color(0,255,0));
-					Touches.setEditable(false);
-					Touches.setHorizontalAlignment(SwingConstants.CENTER);
-					Touches.setSelectedTextColor(new java.awt.Color(255,255,255));
-					Touches.setSelectionColor(new java.awt.Color(255,255,255));
-					Touches.setPreferredSize(new java.awt.Dimension(100, 25));
-					Touches.setCaretColor(new java.awt.Color(0,0,0));
-				}
+				tabJButton[c][l] = new MesJButton(c,l);
+				grilleJeuPanel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
+				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
+				tabJButton[c][l].setBorderPainted(true);
+				tabJButton[c][l].addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jButton1ActionPerformed(evt);
+					}
+				});
+			}
+		}
+		
+		mainPanel.add(infoPanel);
+		mainPanel.add(grilleJeuPanel);
+		this.add(mainPanel);
 	}
-	
+
 	public static MesJButton[][] getTabJButton() {
 		return tabJButton;
 	}
-	
+
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		try
 		{
-		  MesJButton source = (MesJButton)evt.getSource();
-		 // ((Bulle) MesBulles.get(source.getColonne()+"/"+source.getLigne())).changerCouleur();
+			MesJButton source = (MesJButton)evt.getSource();
+			// ((Bulle) MesBulles.get(source.getColonne()+"/"+source.getLigne())).changerCouleur();
 		} 
 		catch(Exception e){}
 	}
