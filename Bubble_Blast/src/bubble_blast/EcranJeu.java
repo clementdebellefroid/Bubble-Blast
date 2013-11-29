@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -43,19 +44,19 @@ public class EcranJeu extends NouvelleFenetre{
 		JLabel niveauLabel = new JLabel("Niveau:");
 		niveauTxt = new JTextField();
 		niveauTxt.setEditable(false);
-		niveauTxt.setBackground(new Color(0,255,0));
+		niveauTxt.setBackground(new Color(130,200,255));
 		niveauTxt.setPreferredSize(new Dimension(50, 30));
 
 		JLabel scoreLabel = new JLabel("Score:");
 		scoreTxt = new JTextField();
 		scoreTxt.setEditable(false);
-		scoreTxt.setBackground(new Color(0,255,0));
+		scoreTxt.setBackground(new Color(130,200,255));
 		scoreTxt.setPreferredSize(new Dimension(130, 50));
 
 		JLabel touchesLabel = new JLabel("Touches:");
 		touchesTxt = new JTextField();
 		touchesTxt.setEditable(false);
-		touchesTxt.setBackground(new Color(0,255,0));
+		touchesTxt.setBackground(new Color(130,200,255));
 		touchesTxt.setPreferredSize(new Dimension(50, 30));
 
 		infoPanel.add(niveauLabel);
@@ -79,8 +80,8 @@ public class EcranJeu extends NouvelleFenetre{
 				tabJButton[c][l] = new MesJButton(c,l);
 				grilleJeuPanel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
-				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
-				tabJButton[c][l].setBorderPainted(true);
+				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
+				tabJButton[c][l].setBorder(BorderFactory.createCompoundBorder());
 				tabJButton[c][l].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButton1ActionPerformed(evt);
