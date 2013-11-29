@@ -4,19 +4,20 @@ import java.util.Hashtable;
 
 public class Niveau {
 
-	private String titre;
-	public static Hashtable<String,Bulle> MesBulles = new Hashtable<String,Bulle>(30);
+	private int titre;
+	public Hashtable<String,Bulle> MesBulles = new Hashtable<String,Bulle>(30);
 
-	public Niveau(String titre, Hashtable<String,Bulle> MesBulles){
+	public Niveau(int titre){
+		MesBulles.clear();
 		this.titre = titre;
-		Niveau.MesBulles = MesBulles;
+		if(titre == 1)initNiveau1();
 	}
 
-	public String getTitre() {
+	public int getTitre() {
 		return titre;
 	}
 
-	public void setTitre(String titre) {
+	public void setTitre(int titre) {
 		this.titre = titre;
 	}
 	

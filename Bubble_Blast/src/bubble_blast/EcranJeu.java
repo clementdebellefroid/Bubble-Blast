@@ -24,10 +24,13 @@ public class EcranJeu extends NouvelleFenetre{
 	private static int nbLignes = 6;
 	private int tailleCoteBouton = 60;
 	private static MesJButton[][] tabJButton = new MesJButton[nbColonnes][nbLignes];
+	private Niveau niveauChoisi;
 
-	public EcranJeu() {
+	public EcranJeu(int choixNiveau) {
 		super();
 		initFenetre();
+		niveauChoisi = new Niveau(choixNiveau);
+		initTextFields();
 	}
 
 	private void initFenetre() {
@@ -54,7 +57,7 @@ public class EcranJeu extends NouvelleFenetre{
 		scoreTxt.setPreferredSize(new Dimension(130, 50));
 
 		JLabel touchesLabel = new JLabel("Touches:");
-		touchesTxt = new JTextField();
+		touchesTxt = new JTextField("0");
 		touchesTxt.setEditable(false);
 		touchesTxt.setBackground(new Color(130,200,255));
 		touchesTxt.setPreferredSize(new Dimension(50, 30));
@@ -80,7 +83,7 @@ public class EcranJeu extends NouvelleFenetre{
 				tabJButton[c][l] = new MesJButton(c,l);
 				grilleJeuPanel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
-				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
+				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
 				tabJButton[c][l].setBorder(BorderFactory.createCompoundBorder());
 				tabJButton[c][l].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
@@ -99,11 +102,18 @@ public class EcranJeu extends NouvelleFenetre{
 		return tabJButton;
 	}
 
+	public void initTextFields(){
+		niveauTxt.setText(""+niveauChoisi.getTitre());
+		scoreTxt.setText(""+0);
+		touchesTxt.setText(""+0);
+	}
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		try
 		{
 			MesJButton source = (MesJButton)evt.getSource();
-			// ((Bulle) MesBulles.get(source.getColonne()+"/"+source.getLigne())).changerCouleur();
+			Bulle bulleCliquee = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
+			if(bulleCliquee.getCouleur()!=0) touchesTxt.setText(""+(Integer.parseInt(touchesTxt.getText())+1));
+			bulleCliquee.changerCouleur();
 		} 
 		catch(Exception e){}
 	}

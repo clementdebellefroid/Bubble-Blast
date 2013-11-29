@@ -50,22 +50,22 @@ public class EcranAccueil extends NouvelleFenetre{
 		
 		unJoueur.addActionListener(new ActionListener() {
 		       public void actionPerformed(ActionEvent evt) {
-		        jButton1ActionPerformed(evt);
+		        jButton1JoueurActionPerformed(evt);
 		       }
 		      });
 		deuxJoueurs.addActionListener(new ActionListener() {
 		       public void actionPerformed(ActionEvent evt) {
-		        jButton2ActionPerformed(evt);
+		        jButton2JoueursActionPerformed(evt);
 		       }
 		      });
 	}
 	
-	private void jButton1ActionPerformed(ActionEvent evt) {
-		EcranJeu ecranJeu = new EcranJeu();
+	private void jButton1JoueurActionPerformed(ActionEvent evt) {
+		EcranNiveaux ecranNiveau = new EcranNiveaux();
 		this.setVisible(false);
 	}
 	
-	private void jButton2ActionPerformed(ActionEvent evt) {
+	private void jButton2JoueursActionPerformed(ActionEvent evt) {
 
 	}
 }
