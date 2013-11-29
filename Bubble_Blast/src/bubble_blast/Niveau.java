@@ -32,6 +32,14 @@ public class Niveau {
 		MesBulles.put(2+"/"+5, b4);
 		Bulle b5 = new Bulle(4,3,3);
 		MesBulles.put(3+"/"+3, b5);
+		Bulle b6 = new Bulle(4,2,4);
+		MesBulles.put(2+"/"+4, b6);
+		Bulle b7 = new Bulle(2,3,4);
+		MesBulles.put(3+"/"+4, b7);
+		Bulle b8 = new Bulle(2,3,5);
+		MesBulles.put(3+"/"+5, b8);
+		Bulle b9 = new Bulle(2,4,4);
+		MesBulles.put(4+"/"+4, b9);
 	}
 
 }

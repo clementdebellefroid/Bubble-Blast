@@ -56,8 +56,8 @@ public class Bulle{
 	}
 	
 	public void eclaterBulle(int i, int j){
-		couleur = 0;
 		(EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
+		couleur = 0;
 	}
 	
 }

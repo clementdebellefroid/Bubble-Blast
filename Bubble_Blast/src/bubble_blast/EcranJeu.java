@@ -107,13 +107,34 @@ public class EcranJeu extends NouvelleFenetre{
 		scoreTxt.setText(""+0);
 		touchesTxt.setText(""+0);
 	}
+	
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		try
 		{
 			MesJButton source = (MesJButton)evt.getSource();
 			Bulle bulleCliquee = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
-			if(bulleCliquee.getCouleur()!=0) touchesTxt.setText(""+(Integer.parseInt(touchesTxt.getText())+1));
-			bulleCliquee.changerCouleur();
+			Bulle bulleDessus = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-1)));
+			Bulle bulleDessous = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()+1)));
+			Bulle bulleGauche = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()-1)+"/"+source.getLigne()));
+			Bulle bulleDroite = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+1)+"/"+source.getLigne()));
+			
+			if(bulleCliquee.getCouleur() != 0)
+			{
+				touchesTxt.setText(""+(Integer.parseInt(touchesTxt.getText())+1));
+				if(bulleCliquee.getCouleur() == 1)
+				{
+					bulleCliquee.changerCouleur();
+					bulleDessous.changerCouleur();
+					bulleDessus.changerCouleur();
+					bulleGauche.changerCouleur();
+					bulleDroite.changerCouleur();
+				}
+				else
+				{
+					bulleCliquee.changerCouleur();
+				}
+			}
+
 		} 
 		catch(Exception e){}
 	}
