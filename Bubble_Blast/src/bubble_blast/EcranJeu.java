@@ -121,6 +121,7 @@ public class EcranJeu extends NouvelleFenetre{
 			if(bulleCliquee.getCouleur() != 0)
 			{
 				touchesTxt.setText(""+(Integer.parseInt(touchesTxt.getText())+1));
+				System.out.println("test commit");
 				if(bulleCliquee.getCouleur() == 1)
 				{
 					bulleCliquee.changerCouleur();
