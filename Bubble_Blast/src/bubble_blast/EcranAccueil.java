@@ -66,6 +66,7 @@ public class EcranAccueil extends NouvelleFenetre{
 	}
 	
 	private void jButton2JoueursActionPerformed(ActionEvent evt) {
-
+		EcranNbParties ecranNbParties = new EcranNbParties();
+		this.setVisible(false);
 	}
 }

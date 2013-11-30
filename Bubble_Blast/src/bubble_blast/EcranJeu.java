@@ -71,7 +71,7 @@ public class EcranJeu extends NouvelleFenetre{
 
 
 		JPanel grilleJeuPanel = new JPanel();
-		
+
 		GridBagLayout grilleJeuPanelLayout = new GridBagLayout();
 		grilleJeuPanel.setLayout(grilleJeuPanelLayout);
 		grilleJeuPanel.setBackground(new Color(221,225,240));
@@ -84,7 +84,7 @@ public class EcranJeu extends NouvelleFenetre{
 				grilleJeuPanel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
 				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
-				tabJButton[c][l].setBorder(BorderFactory.createCompoundBorder());
+				tabJButton[c][l].setBorder(BorderFactory.createEtchedBorder());
 				tabJButton[c][l].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButton1ActionPerformed(evt);
@@ -92,7 +92,7 @@ public class EcranJeu extends NouvelleFenetre{
 				});
 			}
 		}
-		
+
 		mainPanel.add(infoPanel);
 		mainPanel.add(grilleJeuPanel);
 		this.add(mainPanel);
@@ -107,35 +107,188 @@ public class EcranJeu extends NouvelleFenetre{
 		scoreTxt.setText(""+0);
 		touchesTxt.setText(""+0);
 	}
-	
+
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		try
 		{
 			MesJButton source = (MesJButton)evt.getSource();
 			Bulle bulleCliquee = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
 			Bulle bulleDessus = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-1)));
+			Bulle bulleDessus1 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-2)));
+			Bulle bulleDessus2 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-3)));
+			Bulle bulleDessus3 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-4)));
+			Bulle bulleDessus4 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-5)));
 			Bulle bulleDessous = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()+1)));
+			Bulle bulleDessous1 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()+2)));
+			Bulle bulleDessous2 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()+3)));
+			Bulle bulleDessous3 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()+4)));
+			Bulle bulleDessous4 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()+5)));
 			Bulle bulleGauche = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()-1)+"/"+source.getLigne()));
+			Bulle bulleGauche1 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()-2)+"/"+source.getLigne()));
+			Bulle bulleGauche2 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()-3)+"/"+source.getLigne()));
+			Bulle bulleGauche3 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()-4)+"/"+source.getLigne()));
 			Bulle bulleDroite = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+1)+"/"+source.getLigne()));
-			
+			Bulle bulleDroite1 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+2)+"/"+source.getLigne()));
+			Bulle bulleDroite2 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+3)+"/"+source.getLigne()));
+			Bulle bulleDroite3 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+4)+"/"+source.getLigne()));
+
+
 			if(bulleCliquee.getCouleur() != 0)
 			{
 				touchesTxt.setText(""+(Integer.parseInt(touchesTxt.getText())+1));
-				System.out.println("test commit");
 				if(bulleCliquee.getCouleur() == 1)
 				{
-					bulleCliquee.changerCouleur();
-					bulleDessous.changerCouleur();
-					bulleDessus.changerCouleur();
-					bulleGauche.changerCouleur();
-					bulleDroite.changerCouleur();
-				}
-				else
-				{
-					bulleCliquee.changerCouleur();
-				}
-			}
+					if ((bulleCliquee.getC() == 0) && (bulleCliquee.getL() == 5))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleDessus.getCouleur() != 0)	bulleDessus.changerCouleur();
+						 else if (bulleDessus1.getCouleur() != 0) bulleDessus1.changerCouleur();
+						  else if (bulleDessus2.getCouleur() != 0) bulleDessus2.changerCouleur();
+						   else if (bulleDessus3.getCouleur() != 0) bulleDessus3.changerCouleur();
+						    else if (bulleDessus4.getCouleur() != 0) bulleDessus4.changerCouleur();
 
+						if (bulleDroite.getCouleur() != 0) bulleDroite.changerCouleur();
+						 else if (bulleDroite1.getCouleur() != 0) bulleDroite1.changerCouleur();
+						  else if (bulleDroite2.getCouleur() != 0) bulleDroite2.changerCouleur();	
+						   else if (bulleDroite3.getCouleur() != 0) bulleDroite3.changerCouleur();	
+					}
+					if ((bulleCliquee.getC() == 0)  && (bulleCliquee.getL() != 0) && (bulleCliquee.getL() != 5))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleDessus.getCouleur() != 0)	bulleDessus.changerCouleur();
+						 else if (bulleDessus1.getCouleur() != 0) bulleDessus1.changerCouleur();
+						  else if (bulleDessus2.getCouleur() != 0) bulleDessus2.changerCouleur();
+						   else if (bulleDessus3.getCouleur() != 0) bulleDessus3.changerCouleur();
+
+						if (bulleDroite.getCouleur() != 0) bulleDroite.changerCouleur();
+						 else if (bulleDroite1.getCouleur() != 0) bulleDroite1.changerCouleur();
+						  else if (bulleDroite2.getCouleur() != 0) bulleDroite2.changerCouleur();	
+						   else if (bulleDroite3.getCouleur() != 0) bulleDroite3.changerCouleur();	
+						
+						if (bulleDessous.getCouleur() != 0) bulleDessous.changerCouleur();
+						 else if (bulleDessous1.getCouleur() != 0) bulleDessous1.changerCouleur();
+						  else if (bulleDessous2.getCouleur() != 0) bulleDessous2.changerCouleur();
+						   else if (bulleDessous3.getCouleur() != 0) bulleDessous3.changerCouleur();
+					}
+					if ((bulleCliquee.getC() == 0) && (bulleCliquee.getL() == 0))
+					{					
+						bulleCliquee.changerCouleur();
+						if (bulleDroite.getCouleur() != 0) bulleDroite.changerCouleur();
+						 else if (bulleDroite1.getCouleur() != 0) bulleDroite1.changerCouleur();
+						  else if (bulleDroite2.getCouleur() != 0) bulleDroite2.changerCouleur();	
+						   else if (bulleDroite3.getCouleur() != 0) bulleDroite3.changerCouleur();	
+						
+						if (bulleDessous.getCouleur() != 0) bulleDessous.changerCouleur();
+						 else if (bulleDessous1.getCouleur() != 0) bulleDessous1.changerCouleur();
+						  else if (bulleDessous2.getCouleur() != 0) bulleDessous2.changerCouleur();
+						   else if (bulleDessous3.getCouleur() != 0) bulleDessous3.changerCouleur();
+						    else if (bulleDessous4.getCouleur() != 0) bulleDessous4.changerCouleur();
+					}
+					if ((bulleCliquee.getC() != 0) && (bulleCliquee.getC() != 4) && (bulleCliquee.getL() == 0))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleGauche.getCouleur() != 0) bulleGauche.changerCouleur();
+						 else if (bulleGauche1.getCouleur() != 0) bulleGauche1.changerCouleur();
+						  else if (bulleGauche2.getCouleur() != 0) bulleGauche2.changerCouleur();
+						
+						if (bulleDessous.getCouleur() != 0) bulleDessous.changerCouleur();
+						 else if (bulleDessous1.getCouleur() != 0) bulleDessous1.changerCouleur();
+						  else if (bulleDessous2.getCouleur() != 0) bulleDessous2.changerCouleur();
+						   else if (bulleDessous3.getCouleur() != 0) bulleDessous3.changerCouleur();
+						    else if (bulleDessous4.getCouleur() != 0) bulleDessous4.changerCouleur();
+						
+						if (bulleDroite.getCouleur() != 0) bulleDroite.changerCouleur();
+						 else if (bulleDroite1.getCouleur() != 0) bulleDroite1.changerCouleur();
+						  else if (bulleDroite2.getCouleur() != 0) bulleDroite2.changerCouleur();	
+					}
+					if ((bulleCliquee.getC() == 4) && (bulleCliquee.getL() == 0))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleGauche.getCouleur() != 0) bulleGauche.changerCouleur();
+						 else if (bulleGauche1.getCouleur() != 0) bulleGauche1.changerCouleur();
+						  else if (bulleGauche2.getCouleur() != 0) bulleGauche2.changerCouleur();
+						   else if (bulleGauche3.getCouleur() != 0) bulleGauche3.changerCouleur();
+						
+						if (bulleDessous.getCouleur() != 0) bulleDessous.changerCouleur();
+						 else if (bulleDessous1.getCouleur() != 0) bulleDessous1.changerCouleur();
+						  else if (bulleDessous2.getCouleur() != 0) bulleDessous2.changerCouleur();
+						   else if (bulleDessous3.getCouleur() != 0) bulleDessous3.changerCouleur();
+						    else if (bulleDessous4.getCouleur() != 0) bulleDessous4.changerCouleur();
+					}
+					if ((bulleCliquee.getC() == 4) && (bulleCliquee.getL() != 0) && (bulleCliquee.getL() != 5))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleGauche.getCouleur() != 0) bulleGauche.changerCouleur();
+						 else if (bulleGauche1.getCouleur() != 0) bulleGauche1.changerCouleur();
+						  else if (bulleGauche2.getCouleur() != 0) bulleGauche2.changerCouleur();
+						   else if (bulleGauche3.getCouleur() != 0) bulleGauche3.changerCouleur();
+						
+						if (bulleDessous.getCouleur() != 0) bulleDessous.changerCouleur();
+						 else if (bulleDessous1.getCouleur() != 0) bulleDessous1.changerCouleur();
+						  else if (bulleDessous2.getCouleur() != 0) bulleDessous2.changerCouleur();
+						   else if (bulleDessous3.getCouleur() != 0) bulleDessous3.changerCouleur();
+						
+						if (bulleDessus.getCouleur() != 0)	bulleDessus.changerCouleur();
+						 else if (bulleDessus1.getCouleur() != 0) bulleDessus1.changerCouleur();
+						  else if (bulleDessus2.getCouleur() != 0) bulleDessus2.changerCouleur();
+						   else if (bulleDessus3.getCouleur() != 0) bulleDessus3.changerCouleur();
+					}
+					if ((bulleCliquee.getC() == 4) && (bulleCliquee.getL() == 5))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleDessus.getCouleur() != 0)	bulleDessus.changerCouleur();
+						 else if (bulleDessus1.getCouleur() != 0) bulleDessus1.changerCouleur();
+						  else if (bulleDessus2.getCouleur() != 0) bulleDessus2.changerCouleur();
+						   else if (bulleDessus3.getCouleur() != 0) bulleDessus3.changerCouleur();
+						    else if (bulleDessus4.getCouleur() != 0) bulleDessus4.changerCouleur();
+						
+						if (bulleGauche.getCouleur() != 0) bulleGauche.changerCouleur();
+						 else if (bulleGauche1.getCouleur() != 0) bulleGauche1.changerCouleur();
+						  else if (bulleGauche2.getCouleur() != 0) bulleGauche2.changerCouleur();
+						   else if (bulleGauche3.getCouleur() != 0) bulleGauche3.changerCouleur();
+					}
+					if ((bulleCliquee.getC() != 0) && (bulleCliquee.getC() != 5) && (bulleCliquee.getL() == 5))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleDessus.getCouleur() != 0)	bulleDessus.changerCouleur();
+						 else if (bulleDessus1.getCouleur() != 0) bulleDessus1.changerCouleur();
+						  else if (bulleDessus2.getCouleur() != 0) bulleDessus2.changerCouleur();
+						   else if (bulleDessus3.getCouleur() != 0) bulleDessus3.changerCouleur();
+						    else if (bulleDessus4.getCouleur() != 0) bulleDessus4.changerCouleur();
+						
+						if (bulleGauche.getCouleur() != 0) bulleGauche.changerCouleur();
+						 else if (bulleGauche1.getCouleur() != 0) bulleGauche1.changerCouleur();
+						  else if (bulleGauche2.getCouleur() != 0) bulleGauche2.changerCouleur();
+						
+						if (bulleDroite.getCouleur() != 0) bulleDroite.changerCouleur();
+						 else if (bulleDroite1.getCouleur() != 0) bulleDroite1.changerCouleur();
+						  else if (bulleDroite2.getCouleur() != 0) bulleDroite2.changerCouleur();	
+					}
+					if ((bulleCliquee.getC() != 0) && (bulleCliquee.getC() != 5) && (bulleCliquee.getL() != 0) && (bulleCliquee.getL() != 5))
+					{
+						bulleCliquee.changerCouleur();
+						if (bulleDessus.getCouleur() != 0)	bulleDessus.changerCouleur();
+						 else if (bulleDessus1.getCouleur() != 0) bulleDessus1.changerCouleur();
+						  else if (bulleDessus2.getCouleur() != 0) bulleDessus2.changerCouleur();
+						   else if (bulleDessus3.getCouleur() != 0) bulleDessus3.changerCouleur();
+						
+						if (bulleDessous.getCouleur() != 0) bulleDessous.changerCouleur();
+						 else if (bulleDessous1.getCouleur() != 0) bulleDessous1.changerCouleur();
+						  else if (bulleDessous2.getCouleur() != 0) bulleDessous2.changerCouleur();
+						   else if (bulleDessous3.getCouleur() != 0) bulleDessous3.changerCouleur();
+						
+						if (bulleGauche.getCouleur() != 0) bulleGauche.changerCouleur();
+						 else if (bulleGauche1.getCouleur() != 0) bulleGauche1.changerCouleur();
+						  else if (bulleGauche2.getCouleur() != 0) bulleGauche2.changerCouleur();
+						
+						if (bulleDroite.getCouleur() != 0) bulleDroite.changerCouleur();
+						 else if (bulleDroite1.getCouleur() != 0) bulleDroite1.changerCouleur();
+						  else if (bulleDroite2.getCouleur() != 0) bulleDroite2.changerCouleur();
+					}
+					
+				}
+				else bulleCliquee.changerCouleur();
+			}
 		} 
 		catch(Exception e){}
 	}

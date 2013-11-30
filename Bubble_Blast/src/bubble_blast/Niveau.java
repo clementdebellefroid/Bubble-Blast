@@ -7,10 +7,18 @@ public class Niveau {
 	private int titre;
 	public Hashtable<String,Bulle> MesBulles = new Hashtable<String,Bulle>(30);
 
+	public Hashtable<String, Bulle> getMesBulles() {
+		return MesBulles;
+	}
+
+	public void setMesBulles(Hashtable<String, Bulle> mesBulles) {
+		MesBulles = mesBulles;
+	}
+
 	public Niveau(int titre){
 		MesBulles.clear();
 		this.titre = titre;
-		if(titre == 1)initNiveau1();
+		if(titre == 1) initNiveau1();
 	}
 
 	public int getTitre() {
@@ -22,7 +30,7 @@ public class Niveau {
 	}
 	
 	public void initNiveau1(){
-		Bulle b1 = new Bulle(1,0,0);
+		Bulle b1 = new Bulle(2,0,0);
 		MesBulles.put(0+"/"+0, b1);
 		Bulle b2 = new Bulle(1,4,0);
 		MesBulles.put(4+"/"+0, b2);
@@ -40,6 +48,26 @@ public class Niveau {
 		MesBulles.put(3+"/"+5, b8);
 		Bulle b9 = new Bulle(2,4,4);
 		MesBulles.put(4+"/"+4, b9);
+		Bulle b10 = new Bulle(2,0,1);
+		MesBulles.put(0+"/"+1, b10);
+		Bulle b11 = new Bulle(2,1,0);
+		MesBulles.put(1+"/"+0, b11);
+		Bulle b12 = new Bulle(2,1,1);
+		MesBulles.put(1+"/"+1, b12);
+		Bulle b13 = new Bulle(2,0,2);
+		MesBulles.put(0+"/"+2, b13);
+		Bulle b14 = new Bulle(2,2,0);
+		MesBulles.put(2+"/"+0, b14);
+		Bulle b15 = new Bulle(2,3,0);
+		MesBulles.put(3+"/"+0, b15);
+		Bulle b16 = new Bulle(2,4,1);
+		MesBulles.put(4+"/"+1, b16);
+		Bulle b17 = new Bulle(2,2,1);
+		MesBulles.put(2+"/"+1, b17);
+		Bulle b18 = new Bulle(2,1,2);
+		MesBulles.put(1+"/"+2, b18);
+		Bulle b19 = new Bulle(2,3,2);
+		MesBulles.put(3+"/"+2, b19);
 	}
 
 }

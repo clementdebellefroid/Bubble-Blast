@@ -5,18 +5,18 @@ import javax.swing.ImageIcon;
 public class Bulle{
 
 	private int couleur;
-	private int i;
-	private int j;
+	private int c;
+	private int l;
 	
-	public Bulle(int couleur, int i, int j){
+	public Bulle(int couleur, int c, int l){
 		this.couleur = couleur;
-		this.i = i;
-		this.j = j;
-		if(couleur == 0) (EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
-		else if(couleur == 1) (EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
-		else if(couleur == 2) (EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.jpg")));
-		else if(couleur == 3) (EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
-		else if(couleur == 4) (EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleBleue.jpg")));
+		this.c = c;
+		this.l = l;
+		if(couleur == 0) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
+		else if(couleur == 1) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
+		else if(couleur == 2) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.jpg")));
+		else if(couleur == 3) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
+		else if(couleur == 4) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleBleue.jpg")));
 
 	}
 	
@@ -28,36 +28,31 @@ public class Bulle{
 		this.couleur = couleur;
 	}
 	
-	public int getI(){
-		return i;
+	public int getC(){
+		return c;
 	}
 	
-	public int getJ(){
-		return j;
+	public int getL(){
+		return l;
+	}
+	
+	
+	public void changerCouleur(){
+		switch(couleur) {
+		case (1): eclaterBulle(c,l); break;
+		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
+					couleur = 1; break; }
+		case (3): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.jpg")));
+					couleur = 2; break;	}
+		case (4): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
+					couleur = 3; break; }
+		}
 	}
 
-	public void changerCouleur(){
-		if(couleur == 1) eclaterBulle(i,j);
-		else if(couleur == 2)
-		{ 
-			(EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
-			couleur = 1;
-		}
-		else if(couleur == 3)
-		{ 
-			(EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.jpg")));
-			couleur = 2;
-		}
-		else if(couleur == 4)
-		{ 
-			(EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
-			couleur = 3;
-		}
-	}
-	
-	public void eclaterBulle(int i, int j){
-		(EcranJeu.getTabJButton()[i][j]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
+	public void eclaterBulle(int c, int l){
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
 		couleur = 0;
+		
 	}
 	
 }
