@@ -1,11 +1,24 @@
 package bubble_blast;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
 
 public class EcranNiveaux extends NouvelleFenetre {
+	
+	private int niveauChoisi = 1;
 	
 	public EcranNiveaux(){
 		super();
@@ -20,29 +33,36 @@ public class EcranNiveaux extends NouvelleFenetre {
 		niveauxPanel.setLayout(new BoxLayout(niveauxPanel, BoxLayout.Y_AXIS));
 		niveauxPanel.setBackground(new Color(221,225,240));
 		
-		JLabel choixPanel = new JLabel("Choisir niveau");
-		String[] items = {"Niveau 1", "Niveau 2", "Niveau 3"};
-		JComboBox menuNiveaux = new JComboBox();
-		menuNiveaux.setPreferredSize(new Dimension(100, 20));
+		String[] items = {"Niveau 3", "Niveau 2", "Niveau 1"};
+		final JComboBox menuNiveaux = new JComboBox(items);
+		menuNiveaux.setPreferredSize(new Dimension(100, 40));
+		menuNiveaux.setSelectedIndex(2);
 
-	    /*JButton niveau1 = new JButton("Niveau 1");
-	    niveau1.setMaximumSize(new Dimension(100, 50));
-	    niveau1.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    niveau1.setBackground(new Color(130,200,255));*/
+		JButton demarrer = new JButton("DŽmarrer");
+		demarrer.setMaximumSize(new Dimension(150, 75));
+		demarrer.setAlignmentX(Component.CENTER_ALIGNMENT);
+		demarrer.setBackground(new Color(130,200,255));
 
 		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
 		niveauxPanel.add(menuNiveaux);
-		//niveauxPanel.add(niveau1);
-		this.add(niveauxPanel);		
+		niveauxPanel.add(demarrer);
+		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
+		this.add(niveauxPanel);
 		
-		/*niveau1.addActionListener(new ActionListener() {
+		menuNiveaux.addItemListener(new ItemListener(){
+				public void itemStateChanged(ItemEvent ie){
+					niveauChoisi = (menuNiveaux.getSelectedIndex()+1);
+				}
+		});
+		
+		demarrer.addActionListener(new ActionListener() {
 		       public void actionPerformed(ActionEvent evt) {
-		        jButtonNiv1ActionPerformed(evt);
+		        jButtonDemarrerActionPerformed(evt);
 		       }
-		      });*/
+		      });
 	}  
-	/*private void jButtonNiv1ActionPerformed(ActionEvent evt) {
-		EcranJeu ecranJeu = new EcranJeu(1);
+	private void jButtonDemarrerActionPerformed(ActionEvent evt) {
+		EcranJeu ecranJeu = new EcranJeu(niveauChoisi);
 		this.setVisible(false);
-	}*/
+	}
 }
