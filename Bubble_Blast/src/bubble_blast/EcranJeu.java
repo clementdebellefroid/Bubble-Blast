@@ -109,11 +109,21 @@ public class EcranJeu extends NouvelleFenetre{
 	}
 
 	private void jButton1ActionPerformed(ActionEvent evt) {
-		try
-		{
+		/*J'ai pu supprimer le try catch qu'on avait. Ici, on regarde si il existe bien un objet Bulle sur la case
+		 * sur laquelle on a cliqué. Si oui, on applique changerCouleur, si non, on fait rien.
+		 * regarde la méthode containsKey(String) pcq on doit la réutiliser dans eclaterBulle()*/
+		
 			MesJButton source = (MesJButton)evt.getSource();
-			Bulle bulleCliquee = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
-			Bulle bulleDessus = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-1)));
+			if(Niveau.MesBulles.containsKey(source.getColonne()+"/"+source.getLigne()))
+			{
+				Bulle bulleCliquee = ((Bulle) Niveau.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
+				bulleCliquee.changerCouleur();
+				touchesTxt.setText(""+(Integer.parseInt(touchesTxt.getText())+1));
+			}
+			else System.out.println("Pas d'objet present sur cette case");
+
+			
+		/*	Bulle bulleDessus = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-1)));
 			Bulle bulleDessus1 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-2)));
 			Bulle bulleDessus2 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-3)));
 			Bulle bulleDessus3 = ((Bulle) niveauChoisi.MesBulles.get(source.getColonne()+"/"+(source.getLigne()-4)));
@@ -131,7 +141,7 @@ public class EcranJeu extends NouvelleFenetre{
 			Bulle bulleDroite1 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+2)+"/"+source.getLigne()));
 			Bulle bulleDroite2 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+3)+"/"+source.getLigne()));
 			Bulle bulleDroite3 = ((Bulle) niveauChoisi.MesBulles.get((source.getColonne()+4)+"/"+source.getLigne()));
-
+		 
 
 			if(bulleCliquee.getCouleur() != 0)
 			{
@@ -287,9 +297,10 @@ public class EcranJeu extends NouvelleFenetre{
 					}
 					
 				}
+				
 				else bulleCliquee.changerCouleur();
 			}
-		} 
-		catch(Exception e){}
+			*/
+	
 	}
 }

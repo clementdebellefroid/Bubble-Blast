@@ -5,7 +5,13 @@ import java.util.Hashtable;
 public class Niveau {
 
 	private int titre;
-	public Hashtable<String,Bulle> MesBulles = new Hashtable<String,Bulle>(30);
+	public static Hashtable<String,Bulle> MesBulles = new Hashtable<String,Bulle>(30);
+
+	public Niveau(int titre){
+		MesBulles.clear();
+		this.titre = titre;
+		if(titre == 1) initNiveau1();
+	}
 
 	public Hashtable<String, Bulle> getMesBulles() {
 		return MesBulles;
@@ -14,13 +20,7 @@ public class Niveau {
 	public void setMesBulles(Hashtable<String, Bulle> mesBulles) {
 		MesBulles = mesBulles;
 	}
-
-	public Niveau(int titre){
-		MesBulles.clear();
-		this.titre = titre;
-		if(titre == 1) initNiveau1();
-	}
-
+	
 	public int getTitre() {
 		return titre;
 	}
