@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -33,18 +34,19 @@ public class EcranNiveaux extends NouvelleFenetre {
 		niveauxPanel.setLayout(new BoxLayout(niveauxPanel, BoxLayout.Y_AXIS));
 		niveauxPanel.setBackground(new Color(221,225,240));
 		
-		String[] items = {"Niveau 3", "Niveau 2", "Niveau 1"};
-		final JComboBox menuNiveaux = new JComboBox(items);
-		menuNiveaux.setPreferredSize(new Dimension(100, 40));
+		String[] items = {"Niveau 1", "Niveau 2", "Niveau 3"};
+		final JComboBox menuNiveaux = new JComboBox<>(items);
+		menuNiveaux.setMaximumSize(new Dimension(100, 150));
 		menuNiveaux.setSelectedIndex(2);
 
-		JButton demarrer = new JButton("DŽmarrer");
-		demarrer.setMaximumSize(new Dimension(150, 75));
+		JButton demarrer = new JButton(new ImageIcon("bin/images/Go.jpg"));
+		demarrer.setMaximumSize(new Dimension(200, 125));
 		demarrer.setAlignmentX(Component.CENTER_ALIGNMENT);
 		demarrer.setBackground(new Color(130,200,255));
 
 		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
 		niveauxPanel.add(menuNiveaux);
+		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
 		niveauxPanel.add(demarrer);
 		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
 		this.add(niveauxPanel);

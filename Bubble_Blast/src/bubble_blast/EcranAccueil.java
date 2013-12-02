@@ -18,10 +18,6 @@ import javax.swing.JLayeredPane;
 
 public class EcranAccueil extends NouvelleFenetre{
 	
-	//private JPanel accueilPanel;
-	//private JButton unJoueur;
-	//private JButton deuxJoueurs;
-	
 	public EcranAccueil(){
 		super();
 		initFenetre();
@@ -35,15 +31,15 @@ public class EcranAccueil extends NouvelleFenetre{
 	    accueilPanel.setLayout(new BoxLayout(accueilPanel, BoxLayout.Y_AXIS));
 	    
 	    JPanel backgroundPanel = new JPanel();
-	    backgroundPanel.add(new JLabel(new ImageIcon("bin/images/BubbleBlastAccueilBG.jpg")));
+	    backgroundPanel.add(new JLabel(new ImageIcon("bin/images/BB-wallpaper.jpg")));
 
-	    JButton unJoueur = new JButton("1 joueur");
-		unJoueur.setMaximumSize(new Dimension(160, 80));
+	    JButton unJoueur = new JButton((new ImageIcon("bin/images/1joueur.jpg")));
+		unJoueur.setMaximumSize(new Dimension(200, 80));
 		unJoueur.setAlignmentX(Component.CENTER_ALIGNMENT);
 		unJoueur.setBackground(new Color(130,200,255));
 		
-		JButton deuxJoueurs = new JButton("2 joueurs");
-		deuxJoueurs.setMaximumSize(new Dimension(160, 80));
+		JButton deuxJoueurs = new JButton((new ImageIcon("bin/images/2joueurs.jpg")));
+		deuxJoueurs.setMaximumSize(new Dimension(200, 80));
 		deuxJoueurs.setAlignmentX(Component.CENTER_ALIGNMENT);
 		deuxJoueurs.setBackground(new Color(130,200,255));
 
