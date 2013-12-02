@@ -65,6 +65,24 @@ public class Bulle{
 			Bulle bulleDessus = Niveau.MesBulles.get(coordDessus);
 			bulleDessus.changerCouleur();
 		}
+		String coordDessous = coordBulleDessous(c, l);
+		if(coordDessous != null)
+		{
+			Bulle bulleDessous = Niveau.MesBulles.get(coordDessous);
+			bulleDessous.changerCouleur();
+		}
+		String coordGauche = coordBulleGauche(c, l);
+		if(coordGauche != null)
+		{
+			Bulle bulleGauche = Niveau.MesBulles.get(coordGauche);
+			bulleGauche.changerCouleur();
+		}
+		String coordDroite = coordBulleDroite(c, l);
+		if(coordDroite != null)
+		{
+			Bulle bulleDroite = Niveau.MesBulles.get(coordDroite);
+			bulleDroite.changerCouleur();
+		}
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les
@@ -73,8 +91,30 @@ public class Bulle{
 	 * de la grille. On va utiliser la mŽthode .containsKey(c+"/"+i) pour vŽrifier si il existe une bulle dans la
 	 * hashtable. Si oui, on renvoie ses coord.*/
 	public String coordBulleDessus(int c, int l){
-		
+		for(int i = l-1; i>=0 ;i--){
+			if(Niveau.MesBulles.containsKey(c+"/"+i)) return (c+"/"+i);
+		}	
 		return null;
 	}
 	
+	public String coordBulleDessous(int c, int l){
+		for(int i = l+1; i<=5 ;i++){
+			if(Niveau.MesBulles.containsKey(c+"/"+i)) return (c+"/"+i);
+		}	
+		return null;
+	}
+	
+	public String coordBulleGauche(int c, int l){
+		for(int i = c-1; i>=0 ;i--){
+			if(Niveau.MesBulles.containsKey(i+"/"+l)) return (i+"/"+l);
+		}	
+		return null;
+	}
+	
+	public String coordBulleDroite(int c, int l){
+		for(int i = c+1; i<=4 ;i++){
+			if(Niveau.MesBulles.containsKey(i+"/"+l)) return (i+"/"+l);
+		}	
+		return null;
+	}
 }
