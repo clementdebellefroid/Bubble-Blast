@@ -38,7 +38,11 @@ public class Bulle{
 	
 	public void changerCouleur(){
 		switch(couleur) {
-		case (1): eclaterBulle(c,l); break;
+		case (1): eclaterBulle(c,l);
+		  try {
+				Thread.currentThread().sleep(1000);
+			} catch (InterruptedException e) {}
+		  break;
 		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
 					couleur = 1; break; }
 		case (3): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.jpg")));
@@ -54,10 +58,10 @@ public class Bulle{
 		
 		/*check mon commentaire dans EcranJeu */
 		
-		/* gr‰ce aux mŽthodes coordBulleDessus, coordBulleDessous, coordBulleGauche et coordBulleDroite, on
+		/* grâ€°ce aux mÅ½thodes coordBulleDessus, coordBulleDessous, coordBulleGauche et coordBulleDroite, on
 		 * recoit le string correspondant a la position de la prochaine bulle qu'il faut changerCouleur().
-		 * Le string correspond en fait ˆ la Key de la Hashtable. Si le String reu = null, ca veut dire qu'il
-		 * n'y a pas de bulle ˆ Žclater. On a donc une bulleDessus et on applique changerCouleur sur celle-ci
+		 * Le string correspond en fait Ë† la Key de la Hashtable. Si le String reï¿½u = null, ca veut dire qu'il
+		 * n'y a pas de bulle Ë† Å½clater. On a donc une bulleDessus et on applique changerCouleur sur celle-ci
 		 * que si coordBulle renvoie autre chose que null */
 		String coordDessus = coordBulleDessus(c, l);
 		if(coordDessus != null)
@@ -85,10 +89,10 @@ public class Bulle{
 		}
 	}
 	
-	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les
-	 * bulles qu'on peut voir ˆ l'Žcran. Pour obtenir les coordonnŽes de la bulle au dessus, on va utiliser
-	 * un simple "for(int i = l-1; ;i--)" parcourant les cases vides (celle au dessus de la bulle courante jusqu'ˆ celle tout en haut
-	 * de la grille. On va utiliser la mŽthode .containsKey(c+"/"+i) pour vŽrifier si il existe une bulle dans la
+	/*Quand une bulle Å½clate, on la supprime de la Hashtable. Sont donc prÅ½sentes dans la Hashtable que les
+	 * bulles qu'on peut voir Ë† l'Å½cran. Pour obtenir les coordonnÅ½es de la bulle au dessus, on va utiliser
+	 * un simple "for(int i = l-1; ;i--)" parcourant les cases vides (celle au dessus de la bulle courante jusqu'Ë† celle tout en haut
+	 * de la grille. On va utiliser la mÅ½thode .containsKey(c+"/"+i) pour vÅ½rifier si il existe une bulle dans la
 	 * hashtable. Si oui, on renvoie ses coord.*/
 	public String coordBulleDessus(int c, int l){
 		for(int i = l-1; i>=0 ;i--){

@@ -37,14 +37,15 @@ public class EcranJeu extends NouvelleFenetre{
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
-		JPanel mainPanel = new JPanel();
-		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		JLabel mainLabel = new JLabel();
+		mainLabel.setLayout(new BoxLayout(mainLabel, BoxLayout.Y_AXIS));
+		mainLabel.setIcon(new ImageIcon("bin/images/mainLabel.jpg"));
 
-		JPanel infoPanel = new JPanel();
-		infoPanel.setBackground(new Color(130,200,255));
-		infoPanel.setPreferredSize(new Dimension(500,100));
+		JLabel infoLabel = new JLabel();
+		infoLabel.setIcon(new ImageIcon("bin/images/infoPanel.jpg"));
+		infoLabel.setPreferredSize(new Dimension(500,100));
 
-		JLabel niveauLabel = new JLabel("Niveau:");
+		/*JLabel niveauLabel = new JLabel("Niveau:");
 		niveauTxt = new JTextField();
 		niveauTxt.setEditable(false);
 		niveauTxt.setBackground(new Color(130,200,255));
@@ -67,7 +68,7 @@ public class EcranJeu extends NouvelleFenetre{
 		infoPanel.add(scoreLabel);
 		infoPanel.add(scoreTxt);
 		infoPanel.add(touchesLabel);
-		infoPanel.add(touchesTxt);
+		infoPanel.add(touchesTxt);*/
 
 
 		JPanel grilleJeuPanel = new JPanel();
@@ -92,10 +93,10 @@ public class EcranJeu extends NouvelleFenetre{
 				});
 			}
 		}
-
-		mainPanel.add(infoPanel);
-		mainPanel.add(grilleJeuPanel);
-		this.add(mainPanel);
+		
+		this.setContentPane(mainLabel);
+		mainLabel.add(infoLabel);
+		mainLabel.add(grilleJeuPanel);
 	}
 
 	public static MesJButton[][] getTabJButton() {

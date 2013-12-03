@@ -9,6 +9,7 @@ import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Color;
@@ -18,8 +19,7 @@ import java.awt.Dimension;
 import javax.swing.BoxLayout;
 
 public class EcranNiveaux extends NouvelleFenetre {
-	
-	private int niveauChoisi = 1;
+	private int niveauChoisi;
 	
 	public EcranNiveaux(){
 		super();
@@ -30,9 +30,10 @@ public class EcranNiveaux extends NouvelleFenetre {
 	    this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		
-		JPanel niveauxPanel = new JPanel();
-		niveauxPanel.setLayout(new BoxLayout(niveauxPanel, BoxLayout.Y_AXIS));
-		niveauxPanel.setBackground(new Color(221,225,240));
+		JLabel niveauxLabel = new JLabel();
+		niveauxLabel.setLayout(new BoxLayout(niveauxLabel, BoxLayout.Y_AXIS));
+		niveauxLabel.setIcon(new ImageIcon("bin/images/niveau.jpg"));
+		this.setContentPane(niveauxLabel);
 		
 		String[] items = {"Niveau 1", "Niveau 2", "Niveau 3"};
 		final JComboBox menuNiveaux = new JComboBox<>(items);
@@ -44,12 +45,11 @@ public class EcranNiveaux extends NouvelleFenetre {
 		demarrer.setAlignmentX(Component.CENTER_ALIGNMENT);
 		demarrer.setBackground(new Color(130,200,255));
 
-		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
-		niveauxPanel.add(menuNiveaux);
-		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
-		niveauxPanel.add(demarrer);
-		niveauxPanel.add(Box.createRigidArea(new Dimension(0,150)));
-		this.add(niveauxPanel);
+		this.add(Box.createRigidArea(new Dimension(0,200)));
+		this.add(menuNiveaux);
+		this.add(Box.createRigidArea(new Dimension(0,100)));
+		this.add(demarrer);
+		this.add(Box.createRigidArea(new Dimension(0,150)));
 		
 		menuNiveaux.addItemListener(new ItemListener(){
 				public void itemStateChanged(ItemEvent ie){

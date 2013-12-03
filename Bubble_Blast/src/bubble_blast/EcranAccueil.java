@@ -26,13 +26,11 @@ public class EcranAccueil extends NouvelleFenetre{
 	public void initFenetre(){
 	    this.setLocationRelativeTo(null);
 		this.setVisible(true);
-		
-		JPanel accueilPanel = new JPanel();
-	    accueilPanel.setLayout(new BoxLayout(accueilPanel, BoxLayout.Y_AXIS));
 	    
-	    JPanel backgroundPanel = new JPanel();
-	    backgroundPanel.add(new JLabel(new ImageIcon("bin/images/BB-wallpaper.jpg")));
-
+	    JLabel accueilLabel = new JLabel();
+	    accueilLabel.setLayout(new BoxLayout(accueilLabel, BoxLayout.Y_AXIS));
+	    accueilLabel.setIcon(new ImageIcon("bin/images/accueilBackground.jpg"));
+	   
 	    JButton unJoueur = new JButton((new ImageIcon("bin/images/1joueur.jpg")));
 		unJoueur.setMaximumSize(new Dimension(200, 80));
 		unJoueur.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -43,16 +41,13 @@ public class EcranAccueil extends NouvelleFenetre{
 		deuxJoueurs.setAlignmentX(Component.CENTER_ALIGNMENT);
 		deuxJoueurs.setBackground(new Color(130,200,255));
 
-		accueilPanel.add(Box.createRigidArea(new Dimension(0,250)));
-		accueilPanel.add(unJoueur);
-		accueilPanel.add(Box.createRigidArea(new Dimension(0,20)));
-		accueilPanel.add(deuxJoueurs);
-		accueilPanel.setOpaque(false);
-		this.add(backgroundPanel);
-		this.add(accueilPanel);	
+		this.setContentPane(accueilLabel);
+		this.add(Box.createRigidArea(new Dimension(0,250)));
+		this.add(unJoueur);
+		this.add(Box.createRigidArea(new Dimension(0,20)));
+		this.add(deuxJoueurs);
 		
-			
-		
+				
 		unJoueur.addActionListener(new ActionListener() {
 		       public void actionPerformed(ActionEvent evt) {
 		        jButton1JoueurActionPerformed(evt);
