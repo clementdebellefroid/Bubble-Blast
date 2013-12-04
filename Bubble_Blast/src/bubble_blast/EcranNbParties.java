@@ -33,7 +33,7 @@ public class EcranNbParties extends NouvelleFenetre{
 		nbPartiesLabel.setIcon(new ImageIcon("bin/images/nbparties.jpg"));
 
 		String[] items = {"1 partie", "2 parties", "3 parties"};
-		final JComboBox menuParties = new JComboBox<String>(items);
+		final JComboBox menuParties = new JComboBox<>(items);
 		menuParties.setMaximumSize(new Dimension(100, 20));
 		menuParties.setSelectedIndex(0);
 
