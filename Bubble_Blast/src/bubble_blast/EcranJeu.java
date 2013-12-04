@@ -1,6 +1,8 @@
 package bubble_blast;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -38,9 +40,8 @@ public class EcranJeu extends NouvelleFenetre{
 		this.setVisible(true);
 
 		JLabel mainLabel = new JLabel();
-		mainLabel.setLayout(new BoxLayout(mainLabel, BoxLayout.Y_AXIS));
-		mainLabel.setIcon(new ImageIcon("bin/images/mainLabel.jpg"));
-
+		mainLabel.setLayout(new BorderLayout());
+		
 		JLabel infoLabel = new JLabel();
 		infoLabel.setIcon(new ImageIcon("bin/images/infoPanel.jpg"));
 		infoLabel.setPreferredSize(new Dimension(500,100));
@@ -71,12 +72,11 @@ public class EcranJeu extends NouvelleFenetre{
 		infoPanel.add(touchesTxt);*/
 
 
-		JPanel grilleJeuPanel = new JPanel();
+		JLabel grilleJeuPanel = new JLabel();
 
 		GridBagLayout grilleJeuPanelLayout = new GridBagLayout();
 		grilleJeuPanel.setLayout(grilleJeuPanelLayout);
-		grilleJeuPanel.setBackground(new Color(221,225,240));
-		grilleJeuPanel.setBorder(new LineBorder(new Color(66,95,184),1,false));
+		grilleJeuPanel.setIcon(new ImageIcon("bin/images/mainLabel.jpg"));
 		for(int c=0; c<nbColonnes; c++)
 		{
 			for(int l=0; l<nbLignes; l++)
@@ -95,8 +95,8 @@ public class EcranJeu extends NouvelleFenetre{
 		}
 		
 		this.setContentPane(mainLabel);
-		mainLabel.add(infoLabel);
-		mainLabel.add(grilleJeuPanel);
+		mainLabel.add(infoLabel, BorderLayout.NORTH);
+		mainLabel.add(grilleJeuPanel, BorderLayout.CENTER);
 	}
 
 	public static MesJButton[][] getTabJButton() {

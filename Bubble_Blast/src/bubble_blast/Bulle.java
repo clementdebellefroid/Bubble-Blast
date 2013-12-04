@@ -39,9 +39,9 @@ public class Bulle{
 	public void changerCouleur(){
 		switch(couleur) {
 		case (1): eclaterBulle(c,l);
-		  try {
+		 /* try {
 				Thread.currentThread().sleep(1000);
-			} catch (InterruptedException e) {}
+			} catch (InterruptedException e) {}*/
 		  break;
 		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
 					couleur = 1; break; }
