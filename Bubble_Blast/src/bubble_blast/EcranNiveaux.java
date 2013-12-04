@@ -36,14 +36,13 @@ public class EcranNiveaux extends NouvelleFenetre {
 		this.setContentPane(niveauxLabel);
 		
 		String[] items = {"Niveau 1", "Niveau 2", "Niveau 3"};
-		final JComboBox menuNiveaux = new JComboBox<>(items);
-		menuNiveaux.setMaximumSize(new Dimension(100, 150));
-		menuNiveaux.setSelectedIndex(2);
+		final JComboBox menuNiveaux = new JComboBox<String>(items);
+		menuNiveaux.setMaximumSize(new Dimension(100, 20));
+		menuNiveaux.setSelectedIndex(1);
 
 		JButton demarrer = new JButton(new ImageIcon("bin/images/Go.jpg"));
 		demarrer.setMaximumSize(new Dimension(200, 125));
 		demarrer.setAlignmentX(Component.CENTER_ALIGNMENT);
-		demarrer.setBackground(new Color(130,200,255));
 
 		this.add(Box.createRigidArea(new Dimension(0,200)));
 		this.add(menuNiveaux);

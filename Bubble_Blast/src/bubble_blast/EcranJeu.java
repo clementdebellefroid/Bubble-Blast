@@ -43,34 +43,31 @@ public class EcranJeu extends NouvelleFenetre{
 		mainLabel.setLayout(new BorderLayout());
 		
 		JLabel infoLabel = new JLabel();
-		infoLabel.setIcon(new ImageIcon("bin/images/infoPanel.jpg"));
+		infoLabel.setIcon(new ImageIcon("bin/images/infoLabel.jpg"));
 		infoLabel.setPreferredSize(new Dimension(500,100));
+		infoLabel.setLayout(new BorderLayout());
 
-		/*JLabel niveauLabel = new JLabel("Niveau:");
 		niveauTxt = new JTextField();
 		niveauTxt.setEditable(false);
-		niveauTxt.setBackground(new Color(130,200,255));
-		niveauTxt.setPreferredSize(new Dimension(50, 30));
+		niveauTxt.setPreferredSize(new Dimension(150, 30));
+		niveauTxt.setOpaque(false);
+		niveauTxt.setBorder(null);
 
-		JLabel scoreLabel = new JLabel("Score:");
 		scoreTxt = new JTextField();
 		scoreTxt.setEditable(false);
-		scoreTxt.setBackground(new Color(130,200,255));
-		scoreTxt.setPreferredSize(new Dimension(130, 50));
+		scoreTxt.setPreferredSize(new Dimension(220, 50));
+		scoreTxt.setOpaque(false);
+		scoreTxt.setBorder(null);
 
-		JLabel touchesLabel = new JLabel("Touches:");
 		touchesTxt = new JTextField("0");
 		touchesTxt.setEditable(false);
-		touchesTxt.setBackground(new Color(130,200,255));
-		touchesTxt.setPreferredSize(new Dimension(50, 30));
+		touchesTxt.setPreferredSize(new Dimension(130, 30));
+		touchesTxt.setOpaque(false);
+		touchesTxt.setBorder(null);
 
-		infoPanel.add(niveauLabel);
-		infoPanel.add(niveauTxt);
-		infoPanel.add(scoreLabel);
-		infoPanel.add(scoreTxt);
-		infoPanel.add(touchesLabel);
-		infoPanel.add(touchesTxt);*/
-
+		infoLabel.add(niveauTxt, BorderLayout.WEST);
+		infoLabel.add(scoreTxt, BorderLayout.CENTER);
+		infoLabel.add(touchesTxt, BorderLayout.EAST);
 
 		JLabel grilleJeuLabel = new JLabel();
 
