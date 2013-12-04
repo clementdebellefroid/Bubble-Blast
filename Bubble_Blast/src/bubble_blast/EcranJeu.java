@@ -72,17 +72,17 @@ public class EcranJeu extends NouvelleFenetre{
 		infoPanel.add(touchesTxt);*/
 
 
-		JLabel grilleJeuPanel = new JLabel();
+		JLabel grilleJeuLabel = new JLabel();
 
-		GridBagLayout grilleJeuPanelLayout = new GridBagLayout();
-		grilleJeuPanel.setLayout(grilleJeuPanelLayout);
-		grilleJeuPanel.setIcon(new ImageIcon("bin/images/mainLabel.jpg"));
+		GridBagLayout grilleJeuLabelLayout = new GridBagLayout();
+		grilleJeuLabel.setLayout(grilleJeuLabelLayout);
+		grilleJeuLabel.setIcon(new ImageIcon("bin/images/mainLabel.jpg"));
 		for(int c=0; c<nbColonnes; c++)
 		{
 			for(int l=0; l<nbLignes; l++)
 			{
 				tabJButton[c][l] = new MesJButton(c,l);
-				grilleJeuPanel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				grilleJeuLabel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
 				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
 				tabJButton[c][l].setBorder(BorderFactory.createCompoundBorder());
@@ -96,7 +96,7 @@ public class EcranJeu extends NouvelleFenetre{
 		
 		this.setContentPane(mainLabel);
 		mainLabel.add(infoLabel, BorderLayout.NORTH);
-		mainLabel.add(grilleJeuPanel, BorderLayout.CENTER);
+		mainLabel.add(grilleJeuLabel, BorderLayout.CENTER);
 	}
 
 	public static MesJButton[][] getTabJButton() {
