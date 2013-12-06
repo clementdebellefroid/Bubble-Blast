@@ -33,7 +33,7 @@ public class EcranJeu extends NouvelleFenetre{
 		initFenetre();
 		niveauChoisi = new Niveau(choixNiveau);
 		initTextFields();
-	}
+	} 
 
 	private void initFenetre() {
 		this.setLocationRelativeTo(null);
@@ -45,29 +45,33 @@ public class EcranJeu extends NouvelleFenetre{
 		JLabel infoLabel = new JLabel();
 		infoLabel.setIcon(new ImageIcon("bin/images/infoLabel.jpg"));
 		infoLabel.setPreferredSize(new Dimension(500,100));
-		infoLabel.setLayout(new BorderLayout());
+		infoLabel.setLayout(null);
 
 		niveauTxt = new JTextField();
 		niveauTxt.setEditable(false);
-		niveauTxt.setPreferredSize(new Dimension(150, 30));
+		//niveauTxt.setPreferredSize(new Dimension(150, 30));
 		niveauTxt.setOpaque(false);
 		niveauTxt.setBorder(null);
+		niveauTxt.setBounds(50, 41, 45, 30);
 
 		scoreTxt = new JTextField();
 		scoreTxt.setEditable(false);
-		scoreTxt.setPreferredSize(new Dimension(220, 50));
+		//scoreTxt.setPreferredSize(new Dimension(220, 50));
 		scoreTxt.setOpaque(false);
 		scoreTxt.setBorder(null);
+		scoreTxt.setHorizontalAlignment(JTextField.RIGHT);
+		scoreTxt.setBounds(200, 55, 110, 37);
 
 		touchesTxt = new JTextField("0");
 		touchesTxt.setEditable(false);
-		touchesTxt.setPreferredSize(new Dimension(130, 30));
+		//touchesTxt.setPreferredSize(new Dimension(130, 30));
 		touchesTxt.setOpaque(false);
+		touchesTxt.setBounds(415, 43, 60, 30);
 		touchesTxt.setBorder(null);
 
-		infoLabel.add(niveauTxt, BorderLayout.WEST);
-		infoLabel.add(scoreTxt, BorderLayout.CENTER);
-		infoLabel.add(touchesTxt, BorderLayout.EAST);
+		infoLabel.add(niveauTxt);
+		infoLabel.add(scoreTxt);
+		infoLabel.add(touchesTxt);
 
 		JLabel grilleJeuLabel = new JLabel();
 
@@ -81,8 +85,11 @@ public class EcranJeu extends NouvelleFenetre{
 				tabJButton[c][l] = new MesJButton(c,l);
 				grilleJeuLabel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
-				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
+				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.gif")));
 				tabJButton[c][l].setBorder(BorderFactory.createCompoundBorder());
+				tabJButton[c][l].setOpaque(false);
+				tabJButton[c][l].setContentAreaFilled(false);
+				tabJButton[c][l].setBorderPainted(false);
 				tabJButton[c][l].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButton1ActionPerformed(evt);

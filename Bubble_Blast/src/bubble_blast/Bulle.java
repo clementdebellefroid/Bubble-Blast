@@ -12,10 +12,10 @@ public class Bulle{
 		this.couleur = couleur;
 		this.c = c;
 		this.l = l;
-		if(couleur == 1) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
-		else if(couleur == 2) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.jpg")));
+		if(couleur == 1) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.gif")));
+		else if(couleur == 2) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.gif")));
 		else if(couleur == 3) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
-		else if(couleur == 4) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleBleue.jpg")));
+		else if(couleur == 4) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleBleue.gif")));
 
 	}
 	
@@ -43,9 +43,9 @@ public class Bulle{
 				Thread.currentThread().sleep(1000);
 			} catch (InterruptedException e) {}*/
 		  break;
-		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.jpg")));
+		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.gif")));
 					couleur = 1; break; }
-		case (3): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.jpg")));
+		case (3): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.gif")));
 					couleur = 2; break;	}
 		case (4): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
 					couleur = 3; break; }
@@ -53,7 +53,7 @@ public class Bulle{
 	}
 
 	public void eclaterBulle(int c, int l){
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.jpg")));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.gif")));
 		Niveau.MesBulles.remove(c+"/"+l);
 		
 		/*check mon commentaire dans EcranJeu */
@@ -87,6 +87,7 @@ public class Bulle{
 			Bulle bulleDroite = Niveau.MesBulles.get(coordDroite);
 			bulleDroite.changerCouleur();
 		}
+		if(Niveau.MesBulles.isEmpty()) System.out.println("GG");
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les
