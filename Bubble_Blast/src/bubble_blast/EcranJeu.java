@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -46,28 +47,32 @@ public class EcranJeu extends NouvelleFenetre{
 		infoLabel.setIcon(new ImageIcon("bin/images/infoLabel.jpg"));
 		infoLabel.setPreferredSize(new Dimension(500,100));
 		infoLabel.setLayout(null);
-
+		
+		Font font = new Font("Arial", Font.PLAIN,25);
 		niveauTxt = new JTextField();
 		niveauTxt.setEditable(false);
-		//niveauTxt.setPreferredSize(new Dimension(150, 30));
 		niveauTxt.setOpaque(false);
 		niveauTxt.setBorder(null);
 		niveauTxt.setBounds(50, 41, 45, 30);
+		niveauTxt.setFont(font);
+		niveauTxt.setForeground(new Color(181,123,0));
 
 		scoreTxt = new JTextField();
 		scoreTxt.setEditable(false);
-		//scoreTxt.setPreferredSize(new Dimension(220, 50));
 		scoreTxt.setOpaque(false);
 		scoreTxt.setBorder(null);
 		scoreTxt.setHorizontalAlignment(JTextField.RIGHT);
 		scoreTxt.setBounds(200, 55, 110, 37);
+		scoreTxt.setFont(font);
+		scoreTxt.setForeground(new Color(42,137,205));
 
 		touchesTxt = new JTextField("0");
 		touchesTxt.setEditable(false);
-		//touchesTxt.setPreferredSize(new Dimension(130, 30));
 		touchesTxt.setOpaque(false);
 		touchesTxt.setBounds(415, 43, 60, 30);
 		touchesTxt.setBorder(null);
+		touchesTxt.setFont(font);
+		touchesTxt.setForeground(new Color(42,137,205));
 
 		infoLabel.add(niveauTxt);
 		infoLabel.add(scoreTxt);
