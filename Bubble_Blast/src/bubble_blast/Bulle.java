@@ -88,10 +88,9 @@ public class Bulle{
 			Bulle bulleDroite = Niveau.MesBulles.get(coordDroite);
 			bulleDroite.changerCouleur();
 		}
-		if(Niveau.MesBulles.isEmpty()) System.out.println("GG");
 	}
 	public void animEclaterBulle(int c, int l)throws InterruptedException{
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate1.gif"));
+		/*(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate1.gif"));
 		Thread.sleep(100);
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate2.gif"));
 		Thread.sleep(100);
@@ -119,7 +118,7 @@ public class Bulle{
 
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate10.gif"));
 		Thread.sleep(100);
-
+		 */
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/CaseVide.gif"));
 	}
 	
