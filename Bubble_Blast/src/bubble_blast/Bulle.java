@@ -51,7 +51,10 @@ public class Bulle{
 	}
 
 	public void eclaterBulle(int c, int l){
-		animEclaterBulle(c,l);
+	
+		try {
+			animEclaterBulle(c,l);
+		} catch (InterruptedException e) {}
 		Niveau.MesBulles.remove(c+"/"+l);
 		
 		/*check mon commentaire dans EcranJeu */
@@ -87,17 +90,36 @@ public class Bulle{
 		}
 		if(Niveau.MesBulles.isEmpty()) System.out.println("GG");
 	}
-	public void animEclaterBulle(int c, int l){
+	public void animEclaterBulle(int c, int l)throws InterruptedException{
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate1.gif"));
+		Thread.sleep(100);
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate2.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate3.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate4.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate5.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate6.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate7.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate8.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate9.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate10.gif"));
+		Thread.sleep(100);
+
 		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/CaseVide.gif"));
 	}
 	
