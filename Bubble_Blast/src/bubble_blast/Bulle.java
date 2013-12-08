@@ -1,5 +1,6 @@
 package bubble_blast;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Bulle{
@@ -12,10 +13,10 @@ public class Bulle{
 		this.couleur = couleur;
 		this.c = c;
 		this.l = l;
-		if(couleur == 1) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.gif")));
-		else if(couleur == 2) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.gif")));
-		else if(couleur == 3) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
-		else if(couleur == 4) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleBleue.gif")));
+		if(couleur == 1) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeAnimation.gif"));
+		else if(couleur == 2) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleVerte.gif"));
+		else if(couleur == 3) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleJaune.gif"));
+		else if(couleur == 4) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleBleue.gif"));
 
 	}
 	
@@ -39,21 +40,18 @@ public class Bulle{
 	public void changerCouleur(){
 		switch(couleur) {
 		case (1): eclaterBulle(c,l);
-		 /* try {
-				Thread.currentThread().sleep(1000);
-			} catch (InterruptedException e) {}*/
 		  break;
-		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleRouge.gif")));
+		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeAnimation.gif"));
 					couleur = 1; break; }
-		case (3): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleVerte.gif")));
+		case (3): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleVerte.gif"));
 					couleur = 2; break;	}
-		case (4): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/BulleJaune.jpg")));
+		case (4): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleJaune.gif"));
 					couleur = 3; break; }
 		}
 	}
 
 	public void eclaterBulle(int c, int l){
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.gif")));
+		animEclaterBulle(c,l);
 		Niveau.MesBulles.remove(c+"/"+l);
 		
 		/*check mon commentaire dans EcranJeu */
@@ -88,6 +86,19 @@ public class Bulle{
 			bulleDroite.changerCouleur();
 		}
 		if(Niveau.MesBulles.isEmpty()) System.out.println("GG");
+	}
+	public void animEclaterBulle(int c, int l){
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate1.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate2.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate3.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate4.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate5.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate6.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate7.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate8.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate9.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate10.gif"));
+		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/CaseVide.gif"));
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les

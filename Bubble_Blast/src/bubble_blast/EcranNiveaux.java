@@ -36,7 +36,7 @@ public class EcranNiveaux extends NouvelleFenetre {
 		this.setContentPane(niveauxLabel);
 		
 		String[] items = {"Niveau 1", "Niveau 2", "Niveau 3"};
-		final JComboBox menuNiveaux = new JComboBox<>(items);
+		final JComboBox menuNiveaux = new JComboBox(items);
 		menuNiveaux.setMaximumSize(new Dimension(100, 20));
 		menuNiveaux.setSelectedIndex(1);
 
