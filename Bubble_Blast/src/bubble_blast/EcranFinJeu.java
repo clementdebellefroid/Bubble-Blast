@@ -25,11 +25,12 @@ public class EcranFinJeu extends javax.swing.JFrame {
 
 	private void initFenetre() {
 		this.setLocationRelativeTo(null);
+		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setResizable(false);
 		setBackground(new java.awt.Color(255,255,255));
 		this.setSize(350, 200);	
-
+		
 		JLabel finJeuLabel = new JLabel();
 		finJeuLabel.setLayout(new FlowLayout());
 
