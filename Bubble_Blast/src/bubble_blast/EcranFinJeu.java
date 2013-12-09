@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,19 +33,17 @@ public class EcranFinJeu extends javax.swing.JFrame {
 		this.setSize(350, 200);	
 		
 		JLabel finJeuLabel = new JLabel();
+		finJeuLabel.setIcon(new ImageIcon("bin/images/popupLabel.jpg"));
 		finJeuLabel.setLayout(new FlowLayout());
 
-		JButton nivSuivant = new JButton("Niveau Suivant");
+		JButton nivSuivant = new JButton(new ImageIcon("bin/images/niveauSuivantButton.jpg"));
 		nivSuivant.setPreferredSize(new Dimension(120, 45));
-		//	nivSuivant.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
-		JButton reessayer = new JButton("RŽessayer");
-		reessayer.setPreferredSize(new Dimension(90, 45));
-		//reessayer.setAlignmentX(Component.RIGHT_ALIGNMENT);
-
-		JButton menu = new JButton("Menu");
-		menu.setPreferredSize(new Dimension(55, 45));
-		//menu.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		JButton reessayer = new JButton(new ImageIcon("bin/images/reessayerButton.jpg"));
+		reessayer.setPreferredSize(new Dimension(100, 45));
+	
+		JButton menu = new JButton(new ImageIcon("bin/images/menuButton.jpg"));
+		menu.setPreferredSize(new Dimension(85, 45));
 
 		this.setContentPane(finJeuLabel);
 		this.add(Box.createRigidArea(new Dimension(0,250)));

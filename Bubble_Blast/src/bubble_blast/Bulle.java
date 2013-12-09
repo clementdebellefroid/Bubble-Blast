@@ -1,5 +1,9 @@
 package bubble_blast;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -52,9 +56,7 @@ public class Bulle{
 
 	public void eclaterBulle(int c, int l){
 	
-		try {
-			animEclaterBulle(c,l);
-		} catch (InterruptedException e) {}
+		animEclaterBulle(c,l);
 		Niveau.MesBulles.remove(c+"/"+l);
 		
 		/*check mon commentaire dans EcranJeu */
@@ -89,37 +91,12 @@ public class Bulle{
 			bulleDroite.changerCouleur();
 		}
 	}
-	public void animEclaterBulle(int c, int l)throws InterruptedException{
-		/*(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate1.gif"));
-		Thread.sleep(100);
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate2.gif"));
-		Thread.sleep(100);
+	public void animEclaterBulle(int c, int l){
+		
+		ImageIcon animEclate = new ImageIcon("bin/images/BulleRougeEclateAnim.gif");
+		animEclate.getImage().flush();
+		(EcranJeu.getTabJButton()[c][l]).setIcon(animEclate);
 
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate3.gif"));
-		Thread.sleep(100);
-
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate4.gif"));
-		Thread.sleep(100);
-
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate5.gif"));
-		Thread.sleep(100);
-
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate6.gif"));
-		Thread.sleep(100);
-
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate7.gif"));
-		Thread.sleep(100);
-
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate8.gif"));
-		Thread.sleep(100);
-
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate9.gif"));
-		Thread.sleep(100);
-
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeEclate10.gif"));
-		Thread.sleep(100);
-		 */
-		(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/CaseVide.gif"));
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les
