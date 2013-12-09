@@ -43,19 +43,31 @@ public class Bulle{
 	
 	public void changerCouleur(){
 		switch(couleur) {
-		case (1): eclaterBulle(c,l);
-		  break;
-		case (2): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeAnimation.gif"));
-					couleur = 1; break; }
-		case (3): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleVerte.gif"));
-					couleur = 2; break;	}
-		case (4): { (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleJaune.gif"));
-					couleur = 3; break; }
+		case (1): eclaterBulle(c,l);break;
+		case (2):{
+					(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeAnimation.gif"));
+					Score.addCombo();
+					couleur = 1;
+					break; 
+				}
+		case (3):{
+					(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleVerte.gif"));
+					Score.addCombo();			
+					couleur = 2;
+					break;
+				}
+		case (4):{
+					(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleJaune.gif"));
+					Score.addCombo();
+					couleur = 3;
+					break;
+				}
 		}
 	}
 
 	public void eclaterBulle(int c, int l){
-	
+		Score.addCombo();
+		Score.addCombo();
 		animEclaterBulle(c,l);
 		Niveau.MesBulles.remove(c+"/"+l);
 		
@@ -91,6 +103,7 @@ public class Bulle{
 			bulleDroite.changerCouleur();
 		}
 	}
+	
 	public void animEclaterBulle(int c, int l){
 		
 		ImageIcon animEclate = new ImageIcon("bin/images/BulleRougeEclateAnim.gif");
