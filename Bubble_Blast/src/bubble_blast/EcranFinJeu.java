@@ -47,6 +47,11 @@ public class EcranFinJeu extends javax.swing.JFrame {
 
 		this.setContentPane(finJeuLabel);
 		this.add(Box.createRigidArea(new Dimension(0,250)));
+		if(niveauFini >= Niveau.getNbNiveaux())
+		{
+			nivSuivant.setVisible(false);
+			this.add(Box.createRigidArea(new Dimension(124,45)));
+		}
 		this.add(nivSuivant);
 		this.add(reessayer);
 		this.add(menu);

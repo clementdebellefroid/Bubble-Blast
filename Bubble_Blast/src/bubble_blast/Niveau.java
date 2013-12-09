@@ -5,6 +5,7 @@ import java.util.Hashtable;
 public class Niveau {
 
 	private int titre;
+	private static int nbNiveaux = 3;
 	public static Hashtable<String,Bulle> MesBulles = new Hashtable<String,Bulle>(30);
 
 	public Niveau(int titre){
@@ -16,6 +17,10 @@ public class Niveau {
 	
 	}
 
+	public static int getNbNiveaux(){
+		return nbNiveaux;
+	}
+	
 	public Hashtable<String, Bulle> getMesBulles() {
 		return MesBulles;
 	}
