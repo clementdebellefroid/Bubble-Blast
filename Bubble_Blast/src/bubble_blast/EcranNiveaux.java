@@ -50,6 +50,9 @@ public class EcranNiveaux extends NouvelleFenetre {
 		this.add(demarrer);
 		this.add(Box.createRigidArea(new Dimension(0,150)));
 		
+		menuNiveaux.setSelectedIndex(0);
+		niveauChoisi = (menuNiveaux.getSelectedIndex()+1);
+		
 		menuNiveaux.addItemListener(new ItemListener(){
 				public void itemStateChanged(ItemEvent ie){
 					niveauChoisi = (menuNiveaux.getSelectedIndex()+1);

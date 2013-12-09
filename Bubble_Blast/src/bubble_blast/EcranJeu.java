@@ -126,7 +126,7 @@ public class EcranJeu extends NouvelleFenetre{
 			bulleCliquee.changerCouleur();
 			touchesTxt.setText(""+(Integer.parseInt(touchesTxt.getText())+1));
 			if(Niveau.MesBulles.isEmpty()){
-				EcranFinJeu ecranFinJeu = new EcranFinJeu();;
+				EcranFinJeu ecranFinJeu = new EcranFinJeu(niveauChoisi.getTitre(), this);;
 			}
 		}
 	}

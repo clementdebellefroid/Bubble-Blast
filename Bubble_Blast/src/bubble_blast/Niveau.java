@@ -11,6 +11,9 @@ public class Niveau {
 		MesBulles.clear();
 		this.titre = titre;
 		if(titre == 1) initNiveau1();
+		if(titre == 2) initNiveau2();
+		if(titre == 3) initNiveau3();
+	
 	}
 
 	public Hashtable<String, Bulle> getMesBulles() {
@@ -70,4 +73,19 @@ public class Niveau {
 		MesBulles.put(3+"/"+2, b19);
 	}
 
+	public void initNiveau2(){
+		Bulle b1 = new Bulle(2,0,0);
+		MesBulles.put(0+"/"+0, b1);
+		Bulle b2 = new Bulle(1,4,0);
+		MesBulles.put(4+"/"+0, b2);
+	}
+	
+	public void initNiveau3(){
+		Bulle b1 = new Bulle(4,0,0);
+		MesBulles.put(0+"/"+0, b1);
+		Bulle b2 = new Bulle(1,4,0);
+		MesBulles.put(4+"/"+0, b2);
+		Bulle b3 = new Bulle(3,3,0);
+		MesBulles.put(3+"/"+0, b3);
+	}
 }
