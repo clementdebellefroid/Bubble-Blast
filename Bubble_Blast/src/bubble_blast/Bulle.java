@@ -78,29 +78,110 @@ public class Bulle{
 		 * Le string correspond en fait ˆ la Key de la Hashtable. Si le String re�u = null, ca veut dire qu'il
 		 * n'y a pas de bulle ˆ Žclater. On a donc une bulleDessus et on applique changerCouleur sur celle-ci
 		 * que si coordBulle renvoie autre chose que null */
-		String coordDessus = coordBulleDessus(c, l);
-		if(coordDessus != null)
+		
+		int coordDessus = coordBulleDessus(c, l);
+		if(coordDessus != (-1))
 		{
-			Bulle bulleDessus = Niveau.MesBulles.get(coordDessus);
+			for(int i=l-1; i>coordDessus; i--)
+			{
+				ImageIcon animBille = new ImageIcon("bin/images/BilleBasHaut.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
+				//Attendre 360 ms
+			}
+			
+			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+coordDessus);
 			bulleDessus.changerCouleur();
 		}
-		String coordDessous = coordBulleDessous(c, l);
-		if(coordDessous != null)
+		
+		else
 		{
-			Bulle bulleDessous = Niveau.MesBulles.get(coordDessous);
+			for(int i=l-1; i>=0;i--)
+			{
+				ImageIcon animBille = new ImageIcon("bin/images/BilleBasHaut.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
+				//Attendre 360 ms
+			}
+		}
+		
+		int coordDessous = coordBulleDessous(c, l);
+		if(coordDessous != (-1))
+		{
+			for(int i=l+1; i<coordDessous; i++)
+			{
+				ImageIcon animBille = new ImageIcon("bin/images/BilleHautBas.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
+				//Attendre 360 ms
+			}
+			
+			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+coordDessous);
 			bulleDessous.changerCouleur();
 		}
-		String coordGauche = coordBulleGauche(c, l);
-		if(coordGauche != null)
+		
+		else
 		{
-			Bulle bulleGauche = Niveau.MesBulles.get(coordGauche);
+			for(int i=l+1; i<=5;i++)
+			{
+				ImageIcon animBille = new ImageIcon("bin/images/BilleHautBas.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
+				//Attendre 360 ms
+			}
+		}
+		
+		int coordGauche = coordBulleGauche(c, l);
+		if(coordGauche != (-1))
+		{
+			for(int i=c-1; i>coordGauche; i--)
+			{
+	
+				ImageIcon animBille = new ImageIcon("bin/images/BilleDroiteGauche.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
+				//Attendre 360 ms
+			}
+			
+			Bulle bulleGauche = Niveau.MesBulles.get(coordGauche+"/"+l);
 			bulleGauche.changerCouleur();
 		}
-		String coordDroite = coordBulleDroite(c, l);
-		if(coordDroite != null)
+		else
 		{
-			Bulle bulleDroite = Niveau.MesBulles.get(coordDroite);
+			for(int i=c-1; i>=0;i--)
+			{
+	
+				ImageIcon animBille = new ImageIcon("bin/images/BilleDroiteGauche.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
+				//Attendre 360 ms
+			}
+		}
+		
+		int coordDroite = coordBulleDroite(c, l);
+
+		if(coordDroite != (-1))
+		{
+			for(int i=c+1; i<coordDroite; i++)
+			{
+				ImageIcon animBille = new ImageIcon("bin/images/BilleGaucheDroite.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
+				//Attendre 360 ms
+			}
+			
+			Bulle bulleDroite = Niveau.MesBulles.get(coordDroite+"/"+l);
 			bulleDroite.changerCouleur();
+		}
+		else
+		{
+			for(int i=c+1; i<=4;i++)
+			{
+				ImageIcon animBille = new ImageIcon("bin/images/BilleGaucheDroite.gif");
+				animBille.getImage().flush();
+				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
+				//Attendre 360 ms
+			}
 		}
 	}
 	
@@ -109,6 +190,7 @@ public class Bulle{
 		ImageIcon animEclate = new ImageIcon("bin/images/BulleRougeEclateAnim.gif");
 		animEclate.getImage().flush();
 		(EcranJeu.getTabJButton()[c][l]).setIcon(animEclate);
+		//Attendre 720 ms
 
 	}
 	
@@ -117,31 +199,39 @@ public class Bulle{
 	 * un simple "for(int i = l-1; ;i--)" parcourant les cases vides (celle au dessus de la bulle courante jusqu'ˆ celle tout en haut
 	 * de la grille. On va utiliser la mŽthode .containsKey(c+"/"+i) pour vŽrifier si il existe une bulle dans la
 	 * hashtable. Si oui, on renvoie ses coord.*/
-	public String coordBulleDessus(int c, int l){
+	public int coordBulleDessus(int c, int l){
 		for(int i = l-1; i>=0 ;i--){
-			if(Niveau.MesBulles.containsKey(c+"/"+i)) return (c+"/"+i);
+			if(Niveau.MesBulles.containsKey(c+"/"+i)){
+				return (i);
+			}
 		}	
-		return null;
+		return (-1);
 	}
 	
-	public String coordBulleDessous(int c, int l){
+	public int coordBulleDessous(int c, int l){
 		for(int i = l+1; i<=5 ;i++){
-			if(Niveau.MesBulles.containsKey(c+"/"+i)) return (c+"/"+i);
+			if(Niveau.MesBulles.containsKey(c+"/"+i)){
+				return (i);
+			}
 		}	
-		return null;
+		return (-1);
 	}
 	
-	public String coordBulleGauche(int c, int l){
+	public int coordBulleGauche(int c, int l){
 		for(int i = c-1; i>=0 ;i--){
-			if(Niveau.MesBulles.containsKey(i+"/"+l)) return (i+"/"+l);
+			if(Niveau.MesBulles.containsKey(i+"/"+l)){
+				return (i);
+			}
 		}	
-		return null;
+		return (-1);
 	}
 	
-	public String coordBulleDroite(int c, int l){
+	public int coordBulleDroite(int c, int l){
 		for(int i = c+1; i<=4 ;i++){
-			if(Niveau.MesBulles.containsKey(i+"/"+l)) return (i+"/"+l);
+			if(Niveau.MesBulles.containsKey(i+"/"+l)){
+				return (i);
+			}
 		}	
-		return null;
+		return (-1);
 	}
 }

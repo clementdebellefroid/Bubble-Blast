@@ -53,6 +53,11 @@ public class EcranFinJeu extends javax.swing.JFrame {
 			this.add(Box.createRigidArea(new Dimension(124,45)));
 		}
 		this.add(nivSuivant);
+		if(Joueur.isModeSolo() == false)
+		{
+			reessayer.setVisible(false);
+			this.add(Box.createRigidArea(new Dimension(100,45)));
+		}
 		this.add(reessayer);
 		this.add(menu);
 

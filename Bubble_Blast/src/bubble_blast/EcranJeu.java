@@ -132,6 +132,7 @@ public class EcranJeu extends NouvelleFenetre{
 			score.calculerScore();
 			scoreTxt.setText(""+score.getScore());
 			if(Niveau.MesBulles.isEmpty()){
+				if(Joueur.isModeSolo()==false)Joueur.ajouterAScorePartie(score.getScore());
 				EcranFinJeu ecranFinJeu = new EcranFinJeu(niveauChoisi.getTitre(), this);
 			}
 		}

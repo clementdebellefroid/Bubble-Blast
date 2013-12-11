@@ -2,28 +2,27 @@ package bubble_blast;
 
 public class Joueur {
 
-	private String nom;
-	private Score score;
+	private static int scorePartie;
+	private static boolean modeSolo = true;
 	
-	public Joueur(String nom, Score score){
-		this.nom = nom;
-		this.score = score;
+	public Joueur(){
+		scorePartie = 0;
 	}
 	
-	public String getNom() {
-		return nom;
+	public static boolean isModeSolo() {
+		return modeSolo;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public static void setModeSolo(boolean modeSolo) {
+		Joueur.modeSolo = modeSolo;
 	}
 
-	public Score getScore() {
-		return score;
+	public static int getScorePartie() {
+		return scorePartie;
 	}
 
-	public void setScore(Score score) {
-		this.score = score;
+	public static void ajouterAScorePartie(int scoreSupp) {
+		scorePartie = scorePartie + scoreSupp;
 	}
 
 }

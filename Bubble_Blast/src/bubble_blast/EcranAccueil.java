@@ -64,6 +64,8 @@ public class EcranAccueil extends NouvelleFenetre{
 	}
 	
 	private void jButton2JoueursActionPerformed(ActionEvent evt) {
+		Joueur joueur = new Joueur();
+		Joueur.setModeSolo(false);
 		EcranNbParties ecranNbParties = new EcranNbParties();
 		this.setVisible(false);
 	}
