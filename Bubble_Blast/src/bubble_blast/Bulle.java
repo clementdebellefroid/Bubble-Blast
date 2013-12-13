@@ -1,10 +1,5 @@
 package bubble_blast;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Bulle{
@@ -79,11 +74,13 @@ public class Bulle{
 		 * n'y a pas de bulle ˆ Žclater. On a donc une bulleDessus et on applique changerCouleur sur celle-ci
 		 * que si coordBulle renvoie autre chose que null */
 		
+		
 		int coordDessus = coordBulleDessus(c, l);
 		if(coordDessus != (-1))
 		{
 			for(int i=l-1; i>coordDessus; i--)
 			{
+				
 				ImageIcon animBille = new ImageIcon("bin/images/BilleBasHaut.gif");
 				animBille.getImage().flush();
 				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
@@ -166,7 +163,7 @@ public class Bulle{
 			{
 				ImageIcon animBille = new ImageIcon("bin/images/BilleGaucheDroite.gif");
 				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
+				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);		
 				//Attendre 360 ms
 			}
 			
@@ -186,12 +183,10 @@ public class Bulle{
 	}
 	
 	public void animEclaterBulle(int c, int l){
-		
 		ImageIcon animEclate = new ImageIcon("bin/images/BulleRougeEclateAnim.gif");
 		animEclate.getImage().flush();
 		(EcranJeu.getTabJButton()[c][l]).setIcon(animEclate);
 		//Attendre 720 ms
-
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les
