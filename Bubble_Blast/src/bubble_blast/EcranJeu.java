@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class EcranJeu extends NouvelleFenetre{
 	private JTextField scoreTxt;
@@ -88,7 +89,7 @@ public class EcranJeu extends NouvelleFenetre{
 				tabJButton[c][l] = new MesJButton(c,l);
 				grilleJeuLabel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
-				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/CaseVide.gif")));
+				tabJButton[c][l].setIcon(new ImageIcon("bin/images/CaseVide.gif"));
 				tabJButton[c][l].setBorder(BorderFactory.createCompoundBorder());
 				tabJButton[c][l].setOpaque(false);
 				tabJButton[c][l].setContentAreaFilled(false);
@@ -117,12 +118,13 @@ public class EcranJeu extends NouvelleFenetre{
 	}
 
 	private void jButton1ActionPerformed(ActionEvent evt) {
+		mettreAJourCasesVides();
 		MesJButton source = (MesJButton)evt.getSource();
 		if(Niveau.MesBulles.containsKey(source.getColonne()+"/"+source.getLigne()))
 		{
 			Bulle bulleCliquee = ((Bulle) Niveau.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
 			score.setCombo(0);
-			bulleCliquee.changerCouleur();
+			bulleCliquee.changerCouleur(-1);
 			score.ajouterTouche();
 			touchesTxt.setText(""+score.getNbTouches());
 			score.calculerScore();
@@ -130,6 +132,17 @@ public class EcranJeu extends NouvelleFenetre{
 			if(Niveau.MesBulles.isEmpty()){
 				if(Joueur.isModeSolo()==false)Joueur.ajouterAScorePartie(score.getScore());
 				EcranFinJeu ecranFinJeu = new EcranFinJeu(niveauChoisi.getTitre(), this);
+			}
+		}
+	}
+	
+	public void mettreAJourCasesVides(){
+		for(int c=0; c<nbColonnes; c++)
+		{
+			for(int l=0; l<nbLignes; l++)
+			{
+				if(Niveau.MesBulles.containsKey(c+"/"+l));
+				else tabJButton[c][l].setIcon(new ImageIcon("bin/images/CaseVide.gif"));
 			}
 		}
 	}

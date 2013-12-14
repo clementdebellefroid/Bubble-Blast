@@ -83,14 +83,16 @@ public class Niveau {
 		MesBulles.put(0+"/"+0, b1);
 		Bulle b2 = new Bulle(1,4,0);
 		MesBulles.put(4+"/"+0, b2);
+		Bulle b3 = new Bulle(3,0,5);
+		MesBulles.put(0+"/"+5, b3);
 	}
 	
 	public void initNiveau3(){
-		Bulle b1 = new Bulle(4,0,0);
-		MesBulles.put(0+"/"+0, b1);
-		Bulle b2 = new Bulle(1,4,0);
+		Bulle b1 = new Bulle(4,2,5);
+		MesBulles.put(2+"/"+5, b1);
+		Bulle b2 = new Bulle(2,4,0);
 		MesBulles.put(4+"/"+0, b2);
-		Bulle b3 = new Bulle(3,3,0);
-		MesBulles.put(3+"/"+0, b3);
+		Bulle b3 = new Bulle(3,2,0);
+		MesBulles.put(2+"/"+0, b3);
 	}
 }

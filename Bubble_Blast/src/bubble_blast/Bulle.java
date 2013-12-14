@@ -36,23 +36,23 @@ public class Bulle{
 	}
 	
 	
-	public void changerCouleur(){
+	public void changerCouleur(int casesParcouruesBille){
 		switch(couleur) {
-		case (1): eclaterBulle(c,l);break;
+		case (1): eclaterBulle(casesParcouruesBille);break;
 		case (2):{
-					(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeAnimation.gif"));
+					Animation anim = new Animation(c,l,casesParcouruesBille,couleur,true);
 					Score.addCombo();
 					couleur = 1;
 					break; 
 				}
 		case (3):{
-					(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleVerte.gif"));
+					Animation anim = new Animation(c,l,casesParcouruesBille,couleur,true);
 					Score.addCombo();			
 					couleur = 2;
 					break;
 				}
 		case (4):{
-					(EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleJaune.gif"));
+					Animation anim = new Animation(c,l,casesParcouruesBille,couleur,true);
 					Score.addCombo();
 					couleur = 3;
 					break;
@@ -60,133 +60,100 @@ public class Bulle{
 		}
 	}
 
-	public void eclaterBulle(int c, int l){
+	public void eclaterBulle(int casesParcouruesBille){
 		Score.addCombo();
 		Score.addCombo();
-		animEclaterBulle(c,l);
+		int casesVidesAParcourirDessus=0;
+		int casesVidesAParcourirDessous=0;
+		int casesVidesAParcourirGauche=0;
+		int casesVidesAParcourirDroite=0;
+		if(casesParcouruesBille == -1) {
+			Animation animEclatement = new Animation(this, -1);
+		}
+		else 	{
+			Animation animEclatement = new Animation(this, casesParcouruesBille);
+		}
 		Niveau.MesBulles.remove(c+"/"+l);
-		
-		/*check mon commentaire dans EcranJeu */
-		
-		/* gr‰ce aux mŽthodes coordBulleDessus, coordBulleDessous, coordBulleGauche et coordBulleDroite, on
-		 * recoit le string correspondant a la position de la prochaine bulle qu'il faut changerCouleur().
-		 * Le string correspond en fait ˆ la Key de la Hashtable. Si le String re�u = null, ca veut dire qu'il
-		 * n'y a pas de bulle ˆ Žclater. On a donc une bulleDessus et on applique changerCouleur sur celle-ci
-		 * que si coordBulle renvoie autre chose que null */
-		
-		
+
 		int coordDessus = coordBulleDessus(c, l);
 		if(coordDessus != (-1))
 		{
 			for(int i=l-1; i>coordDessus; i--)
 			{
-				
-				ImageIcon animBille = new ImageIcon("bin/images/BilleBasHaut.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
-				//Attendre 360 ms
+				casesVidesAParcourirDessus = l-i;
+				Animation animBilleDessus = new Animation(c,i,1,casesVidesAParcourirDessus);				  
 			}
-			
 			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+coordDessus);
-			bulleDessus.changerCouleur();
+			bulleDessus.changerCouleur(casesVidesAParcourirDessus);
 		}
-		
 		else
 		{
 			for(int i=l-1; i>=0;i--)
 			{
-				ImageIcon animBille = new ImageIcon("bin/images/BilleBasHaut.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
-				//Attendre 360 ms
+				casesVidesAParcourirDessus = l-i;
+				Animation animBilleDessus = new Animation(c,i,1,casesVidesAParcourirDessus);		
 			}
 		}
-		
+
 		int coordDessous = coordBulleDessous(c, l);
 		if(coordDessous != (-1))
 		{
 			for(int i=l+1; i<coordDessous; i++)
 			{
-				ImageIcon animBille = new ImageIcon("bin/images/BilleHautBas.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
-				//Attendre 360 ms
+				casesVidesAParcourirDessous = i-l;
+				Animation animBilleDessous = new Animation(c,i,2,casesVidesAParcourirDessous);
 			}
-			
 			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+coordDessous);
-			bulleDessous.changerCouleur();
+			bulleDessous.changerCouleur(casesVidesAParcourirDessous);
 		}
-		
 		else
 		{
 			for(int i=l+1; i<=5;i++)
 			{
-				ImageIcon animBille = new ImageIcon("bin/images/BilleHautBas.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[c][i]).setIcon(animBille);
-				//Attendre 360 ms
+				casesVidesAParcourirDessous = i-l;
+				Animation animBilleDessous = new Animation(c,i,2,casesVidesAParcourirDessous);		
 			}
 		}
-		
+
 		int coordGauche = coordBulleGauche(c, l);
 		if(coordGauche != (-1))
 		{
 			for(int i=c-1; i>coordGauche; i--)
 			{
-	
-				ImageIcon animBille = new ImageIcon("bin/images/BilleDroiteGauche.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
-				//Attendre 360 ms
+				casesVidesAParcourirGauche = c-i;
+				Animation animBilleGauche = new Animation(i,l,3,casesVidesAParcourirGauche);		
 			}
-			
 			Bulle bulleGauche = Niveau.MesBulles.get(coordGauche+"/"+l);
-			bulleGauche.changerCouleur();
+			bulleGauche.changerCouleur(casesVidesAParcourirGauche);
 		}
 		else
 		{
 			for(int i=c-1; i>=0;i--)
 			{
-	
-				ImageIcon animBille = new ImageIcon("bin/images/BilleDroiteGauche.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
-				//Attendre 360 ms
+				casesVidesAParcourirGauche = c-i;
+				Animation animBilleGauche = new Animation(i,l,3,casesVidesAParcourirGauche);		
 			}
 		}
-		
-		int coordDroite = coordBulleDroite(c, l);
 
+		int coordDroite = coordBulleDroite(c, l);
 		if(coordDroite != (-1))
 		{
 			for(int i=c+1; i<coordDroite; i++)
 			{
-				ImageIcon animBille = new ImageIcon("bin/images/BilleGaucheDroite.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);		
-				//Attendre 360 ms
+				casesVidesAParcourirDroite = i-c;
+				Animation animBilleDroite = new Animation(i,l,4,casesVidesAParcourirDroite);		
 			}
-			
 			Bulle bulleDroite = Niveau.MesBulles.get(coordDroite+"/"+l);
-			bulleDroite.changerCouleur();
+			bulleDroite.changerCouleur(casesVidesAParcourirDroite);
 		}
 		else
 		{
 			for(int i=c+1; i<=4;i++)
 			{
-				ImageIcon animBille = new ImageIcon("bin/images/BilleGaucheDroite.gif");
-				animBille.getImage().flush();
-				(EcranJeu.getTabJButton()[i][l]).setIcon(animBille);
-				//Attendre 360 ms
+				casesVidesAParcourirDroite = i-c;
+				Animation animBilleDroite = new Animation(i,l,4,casesVidesAParcourirDroite);		
 			}
 		}
-	}
-	
-	public void animEclaterBulle(int c, int l){
-		ImageIcon animEclate = new ImageIcon("bin/images/BulleRougeEclateAnim.gif");
-		animEclate.getImage().flush();
-		(EcranJeu.getTabJButton()[c][l]).setIcon(animEclate);
-		//Attendre 720 ms
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les
