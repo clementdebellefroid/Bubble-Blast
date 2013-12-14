@@ -81,8 +81,8 @@ public class Niveau {
 	public void initNiveau2(){
 		Bulle b1 = new Bulle(2,0,0);
 		MesBulles.put(0+"/"+0, b1);
-		Bulle b2 = new Bulle(1,4,0);
-		MesBulles.put(4+"/"+0, b2);
+		Bulle b2 = new Bulle(1,3,3);
+		MesBulles.put(3+"/"+3, b2);
 		Bulle b3 = new Bulle(3,0,5);
 		MesBulles.put(0+"/"+5, b3);
 	}

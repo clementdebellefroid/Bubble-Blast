@@ -124,7 +124,7 @@ public class EcranJeu extends NouvelleFenetre{
 		{
 			Bulle bulleCliquee = ((Bulle) Niveau.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
 			score.setCombo(0);
-			bulleCliquee.changerCouleur(-1);
+			bulleCliquee.changerCouleur();
 			score.ajouterTouche();
 			touchesTxt.setText(""+score.getNbTouches());
 			score.calculerScore();

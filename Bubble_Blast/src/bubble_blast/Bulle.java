@@ -7,6 +7,8 @@ public class Bulle{
 	private int couleur;
 	private int c;
 	private int l;
+	private boolean ready = false;
+	private Animation animation = new Animation(this);
 	
 	public Bulle(int couleur, int c, int l){
 		this.couleur = couleur;
@@ -36,123 +38,66 @@ public class Bulle{
 	}
 	
 	
-	public void changerCouleur(int casesParcouruesBille){
-		switch(couleur) {
-		case (1): eclaterBulle(casesParcouruesBille);break;
-		case (2):{
-					Animation anim = new Animation(c,l,casesParcouruesBille,couleur,true);
-					Score.addCombo();
-					couleur = 1;
-					break; 
-				}
-		case (3):{
-					Animation anim = new Animation(c,l,casesParcouruesBille,couleur,true);
-					Score.addCombo();			
-					couleur = 2;
-					break;
-				}
-		case (4):{
-					Animation anim = new Animation(c,l,casesParcouruesBille,couleur,true);
-					Score.addCombo();
-					couleur = 3;
-					break;
-				}
+	public boolean isReady() {
+		return ready;
+	}
+
+	public void setReady(boolean ready) {
+		this.ready = ready;
+	}
+
+	public void changerCouleur(){
+		animation.changerDeCouleur(this);
+		if(couleur == 1){
+			Score.addCombo();
+			Score.addCombo();
+			Niveau.MesBulles.remove(c+"/"+l);
+			eclaterBulle();
+		}
+		else {
+			Score.addCombo();
+			couleur--;
 		}
 	}
 
-	public void eclaterBulle(int casesParcouruesBille){
-		Score.addCombo();
-		Score.addCombo();
-		int casesVidesAParcourirDessus=0;
-		int casesVidesAParcourirDessous=0;
-		int casesVidesAParcourirGauche=0;
-		int casesVidesAParcourirDroite=0;
-		if(casesParcouruesBille == -1) {
-			Animation animEclatement = new Animation(this, -1);
-		}
-		else 	{
-			Animation animEclatement = new Animation(this, casesParcouruesBille);
-		}
-		Niveau.MesBulles.remove(c+"/"+l);
+	public void eclaterBulle(){
+	
+		int ligneBulleDessus = lBulleDessus(c, l);
+		int casesVidesDessus = l - ligneBulleDessus - 1;
+		if(ligneBulleDessus == -1) casesVidesDessus = l;
 
-		int coordDessus = coordBulleDessus(c, l);
-		if(coordDessus != (-1))
-		{
-			for(int i=l-1; i>coordDessus; i--)
-			{
-				casesVidesAParcourirDessus = l-i;
-				Animation animBilleDessus = new Animation(c,i,1,casesVidesAParcourirDessus);				  
-			}
-			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+coordDessus);
-			bulleDessus.changerCouleur(casesVidesAParcourirDessus);
+		int ligneBulleDessous = lBulleDessous(c, l);
+		int casesVidesDessous = ligneBulleDessous - l - 1;
+		if(ligneBulleDessous == -1) casesVidesDessous = 5 - l;
+		
+		int colonneBulleGauche = cBulleGauche(c, l);
+		int casesVidesGauche = c - colonneBulleGauche - 1;
+		if(colonneBulleGauche == -1) casesVidesGauche = c;
+		
+		int colonneBulleDroite = cBulleDroite(c, l);
+		int casesVidesDroite = colonneBulleDroite - c - 1;
+		if(colonneBulleDroite == -1) casesVidesDroite = 4 - c;
+		
+		animation.genererProjectileBille(this, casesVidesDessus, 1);
+		animation.genererProjectileBille(this, casesVidesDessous, 2);
+		animation.genererProjectileBille(this, casesVidesGauche, 3);
+		animation.genererProjectileBille(this, casesVidesDroite, 4);
+		
+		if(ligneBulleDessus != -1){
+			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+ligneBulleDessus);
+			bulleDessus.changerCouleur();
 		}
-		else
-		{
-			for(int i=l-1; i>=0;i--)
-			{
-				casesVidesAParcourirDessus = l-i;
-				Animation animBilleDessus = new Animation(c,i,1,casesVidesAParcourirDessus);		
-			}
+		if(ligneBulleDessous != -1){
+			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+ligneBulleDessous);
+			bulleDessous.changerCouleur();
 		}
-
-		int coordDessous = coordBulleDessous(c, l);
-		if(coordDessous != (-1))
-		{
-			for(int i=l+1; i<coordDessous; i++)
-			{
-				casesVidesAParcourirDessous = i-l;
-				Animation animBilleDessous = new Animation(c,i,2,casesVidesAParcourirDessous);
-			}
-			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+coordDessous);
-			bulleDessous.changerCouleur(casesVidesAParcourirDessous);
+		if(colonneBulleGauche != -1){
+			Bulle bulleGauche = Niveau.MesBulles.get(colonneBulleGauche+"/"+l);
+			bulleGauche.changerCouleur();
 		}
-		else
-		{
-			for(int i=l+1; i<=5;i++)
-			{
-				casesVidesAParcourirDessous = i-l;
-				Animation animBilleDessous = new Animation(c,i,2,casesVidesAParcourirDessous);		
-			}
-		}
-
-		int coordGauche = coordBulleGauche(c, l);
-		if(coordGauche != (-1))
-		{
-			for(int i=c-1; i>coordGauche; i--)
-			{
-				casesVidesAParcourirGauche = c-i;
-				Animation animBilleGauche = new Animation(i,l,3,casesVidesAParcourirGauche);		
-			}
-			Bulle bulleGauche = Niveau.MesBulles.get(coordGauche+"/"+l);
-			bulleGauche.changerCouleur(casesVidesAParcourirGauche);
-		}
-		else
-		{
-			for(int i=c-1; i>=0;i--)
-			{
-				casesVidesAParcourirGauche = c-i;
-				Animation animBilleGauche = new Animation(i,l,3,casesVidesAParcourirGauche);		
-			}
-		}
-
-		int coordDroite = coordBulleDroite(c, l);
-		if(coordDroite != (-1))
-		{
-			for(int i=c+1; i<coordDroite; i++)
-			{
-				casesVidesAParcourirDroite = i-c;
-				Animation animBilleDroite = new Animation(i,l,4,casesVidesAParcourirDroite);		
-			}
-			Bulle bulleDroite = Niveau.MesBulles.get(coordDroite+"/"+l);
-			bulleDroite.changerCouleur(casesVidesAParcourirDroite);
-		}
-		else
-		{
-			for(int i=c+1; i<=4;i++)
-			{
-				casesVidesAParcourirDroite = i-c;
-				Animation animBilleDroite = new Animation(i,l,4,casesVidesAParcourirDroite);		
-			}
+		if(colonneBulleDroite != -1){
+			Bulle bulleDroite = Niveau.MesBulles.get(colonneBulleDroite+"/"+l);
+			bulleDroite.changerCouleur();
 		}
 	}
 	
@@ -161,7 +106,7 @@ public class Bulle{
 	 * un simple "for(int i = l-1; ;i--)" parcourant les cases vides (celle au dessus de la bulle courante jusqu'ˆ celle tout en haut
 	 * de la grille. On va utiliser la mŽthode .containsKey(c+"/"+i) pour vŽrifier si il existe une bulle dans la
 	 * hashtable. Si oui, on renvoie ses coord.*/
-	public int coordBulleDessus(int c, int l){
+	public int lBulleDessus(int c, int l){
 		for(int i = l-1; i>=0 ;i--){
 			if(Niveau.MesBulles.containsKey(c+"/"+i)){
 				return (i);
@@ -170,7 +115,7 @@ public class Bulle{
 		return (-1);
 	}
 	
-	public int coordBulleDessous(int c, int l){
+	public int lBulleDessous(int c, int l){
 		for(int i = l+1; i<=5 ;i++){
 			if(Niveau.MesBulles.containsKey(c+"/"+i)){
 				return (i);
@@ -179,7 +124,7 @@ public class Bulle{
 		return (-1);
 	}
 	
-	public int coordBulleGauche(int c, int l){
+	public int cBulleGauche(int c, int l){
 		for(int i = c-1; i>=0 ;i--){
 			if(Niveau.MesBulles.containsKey(i+"/"+l)){
 				return (i);
@@ -188,7 +133,7 @@ public class Bulle{
 		return (-1);
 	}
 	
-	public int coordBulleDroite(int c, int l){
+	public int cBulleDroite(int c, int l){
 		for(int i = c+1; i<=4 ;i++){
 			if(Niveau.MesBulles.containsKey(i+"/"+l)){
 				return (i);
