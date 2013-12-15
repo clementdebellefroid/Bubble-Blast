@@ -1,4 +1,4 @@
-package bubble_blast;
+package be.ephec.GUI;
 
 import javax.swing.JButton;
 

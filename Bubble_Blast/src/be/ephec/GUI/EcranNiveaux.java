@@ -1,4 +1,4 @@
-package bubble_blast;
+package be.ephec.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,10 +1,11 @@
-package bubble_blast;
+package be.ephec.bubble_blast;
 
 import java.util.Hashtable;
 
 public class Niveau {
 
 	private int titre;
+	private static int nbNiveauxCrees = 3;
 	private static int nbNiveaux = 3;
 	public static Hashtable<String,Bulle> MesBulles = new Hashtable<String,Bulle>(30);
 
@@ -14,11 +15,18 @@ public class Niveau {
 		if(titre == 1) initNiveau1();
 		if(titre == 2) initNiveau2();
 		if(titre == 3) initNiveau3();
-	
+	}
+
+	public static int getNbNiveauxCrees() {
+		return nbNiveauxCrees;
 	}
 
 	public static int getNbNiveaux(){
 		return nbNiveaux;
+	}
+	
+	public static void setNbNiveaux(int NouveauNbNiveaux){
+		nbNiveaux = NouveauNbNiveaux;
 	}
 	
 	public Hashtable<String, Bulle> getMesBulles() {

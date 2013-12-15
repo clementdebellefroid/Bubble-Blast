@@ -1,4 +1,6 @@
-package bubble_blast;
+package be.ephec.GUI;
+
+import be.ephec.bubble_blast.*;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -6,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Random;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,7 +18,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 public class EcranNbParties extends NouvelleFenetre{
-	private int niveauChoisi;
 
 	public EcranNbParties() {
 		super();
@@ -46,9 +48,13 @@ public class EcranNbParties extends NouvelleFenetre{
 		nbPartiesLabel.add(Box.createRigidArea(new Dimension(0,150)));
 		this.add(nbPartiesLabel);
 
+		menuParties.setSelectedIndex(0);
+		Niveau.setNbNiveaux(menuParties.getSelectedIndex()+1);
+		
 		menuParties.addItemListener(new ItemListener(){
 			public void itemStateChanged(ItemEvent ie){
-				niveauChoisi = (menuParties.getSelectedIndex()+1);
+				Niveau.setNbNiveaux(menuParties.getSelectedIndex()+1);
+				
 			}
 		});
 
@@ -60,6 +66,8 @@ public class EcranNbParties extends NouvelleFenetre{
 	}
 	
 	private void jButtonDemarrerActionPerformed(ActionEvent evt) {
+		System.out.println(Niveau.getNbNiveaux());
+		int niveauChoisi = Niveau.getNbNiveauxCrees() - Niveau.getNbNiveaux() +1;
 		EcranJeu ecranJeu = new EcranJeu(niveauChoisi);
 		this.setVisible(false);
 	}

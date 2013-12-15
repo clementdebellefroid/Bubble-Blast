@@ -1,14 +1,19 @@
-package bubble_blast;
+package be.ephec.GUI;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import be.ephec.bubble_blast.Joueur;
+import be.ephec.bubble_blast.Niveau;
+import be.ephec.reseau.ClientBubbleBlast;
 
 public class EcranFinJeu extends javax.swing.JFrame {
 
@@ -48,6 +53,12 @@ public class EcranFinJeu extends javax.swing.JFrame {
 		{
 			nivSuivant.setVisible(false);
 			this.add(Box.createRigidArea(new Dimension(124,45)));
+			if(Joueur.isModeSolo() == false) {
+				ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
+				EcranResultats ecranResultat = new EcranResultats();
+				ecranJeu.setVisible(false);
+				this.setVisible(false);
+			}
 		}
 		this.add(nivSuivant);
 		if(Joueur.isModeSolo() == false)
@@ -76,10 +87,10 @@ public class EcranFinJeu extends javax.swing.JFrame {
 	}
 
 	private void jButtonNivSuivantActionPerformed(ActionEvent evt) {
-		int niveauSuivant = niveauFini+1;
-		ecranJeu.setVisible(false);
-		ecranJeu = new EcranJeu(niveauSuivant);
-		this.setVisible(false);
+			int niveauSuivant = niveauFini+1;
+			ecranJeu.setVisible(false);
+			ecranJeu = new EcranJeu(niveauSuivant);
+			this.setVisible(false);
 	}
 
 	private void jButtonReessayerActionPerformed(ActionEvent evt) {

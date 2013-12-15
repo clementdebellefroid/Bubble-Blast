@@ -1,11 +1,13 @@
-package bubble_blast;
+package be.ephec.GUI;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
 
-public class Animation {
+import be.ephec.bubble_blast.Bulle;
+
+public class Animation{
 
 	private Timer timer = new Timer();
 
@@ -20,10 +22,10 @@ public class Animation {
 			case(2): gifBilleHautBas(bulle.getC(),bulle.getL()+i,i); break;
 			case(3): gifBilleDroiteGauche(bulle.getC()-i,bulle.getL(),i); break;
 			case(4): gifBilleGaucheDroite(bulle.getC()+i,bulle.getL(),i); break;
-			}
+			}	
 		}
 	}
-//
+	
 	public void gifBilleBasHaut(final int c, final int l, final int i){
 		timer.schedule(new TimerTask() {
 			@Override
@@ -68,12 +70,12 @@ public class Animation {
 		}, i * 650);
 	}
 
-	public void changerDeCouleur(Bulle bulle){
-		switch(bulle.getCouleur()){
-		case(1):eclatement(bulle.getC(),bulle.getL());break;
-		case(2):vertARouge(bulle.getC(),bulle.getL());break;
-		case(3):jauneAVert(bulle.getC(),bulle.getL());break;
-		case(4):bleuAJaune(bulle.getC(),bulle.getL());break;
+	public void changerDeCouleur(int couleur, int c, int l){
+		switch(couleur){
+		case(1):eclatement(c,l);break;
+		case(2):vertARouge(c,l);break;
+		case(3):jauneAVert(c,l);break;
+		case(4):bleuAJaune(c,l);break;
 		}	
 	}
 
@@ -94,5 +96,4 @@ public class Animation {
 		animEclate.getImage().flush();
 		(EcranJeu.getTabJButton()[c][l]).setIcon(animEclate);
 	}
-
 }

@@ -1,4 +1,4 @@
-package bubble_blast;
+package be.ephec.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,6 +15,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import be.ephec.bubble_blast.Bulle;
+import be.ephec.bubble_blast.Joueur;
+import be.ephec.bubble_blast.Niveau;
+import be.ephec.bubble_blast.Score;
 
 public class EcranJeu extends NouvelleFenetre{
 	private JTextField scoreTxt;
@@ -124,7 +129,7 @@ public class EcranJeu extends NouvelleFenetre{
 		{
 			Bulle bulleCliquee = ((Bulle) Niveau.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
 			score.setCombo(0);
-			bulleCliquee.changerCouleur();
+			bulleCliquee.changerCouleur(0);
 			score.ajouterTouche();
 			touchesTxt.setText(""+score.getNbTouches());
 			score.calculerScore();

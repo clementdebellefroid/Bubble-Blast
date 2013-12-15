@@ -1,6 +1,12 @@
-package bubble_blast;
+package be.ephec.bubble_blast;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
+
+import be.ephec.GUI.Animation;
+import be.ephec.GUI.EcranJeu;
 
 public class Bulle{
 
@@ -46,18 +52,24 @@ public class Bulle{
 		this.ready = ready;
 	}
 
-	public void changerCouleur(){
-		animation.changerDeCouleur(this);
-		if(couleur == 1){
-			Score.addCombo();
-			Score.addCombo();
-			Niveau.MesBulles.remove(c+"/"+l);
-			eclaterBulle();
-		}
-		else {
-			Score.addCombo();
-			couleur--;
-		}
+	public void changerCouleur(int tempsAttente){
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				animation.changerDeCouleur(couleur,c,l);
+				if(couleur == 1){
+					Score.addCombo();
+					Score.addCombo();
+					Niveau.MesBulles.remove(c+"/"+l);
+					eclaterBulle();
+				}
+				else {
+					Score.addCombo();
+					couleur--;
+				}
+			}
+		}, tempsAttente);
 	}
 
 	public void eclaterBulle(){
@@ -85,19 +97,19 @@ public class Bulle{
 		
 		if(ligneBulleDessus != -1){
 			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+ligneBulleDessus);
-			bulleDessus.changerCouleur();
+			if(bulleDessus != null) bulleDessus.changerCouleur((casesVidesDessus+1)*650);
 		}
 		if(ligneBulleDessous != -1){
 			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+ligneBulleDessous);
-			bulleDessous.changerCouleur();
+			if(bulleDessous != null)bulleDessous.changerCouleur((casesVidesDessous+1)*650);
 		}
 		if(colonneBulleGauche != -1){
 			Bulle bulleGauche = Niveau.MesBulles.get(colonneBulleGauche+"/"+l);
-			bulleGauche.changerCouleur();
+			if(bulleGauche != null)bulleGauche.changerCouleur((casesVidesGauche+1)*650);
 		}
 		if(colonneBulleDroite != -1){
 			Bulle bulleDroite = Niveau.MesBulles.get(colonneBulleDroite+"/"+l);
-			bulleDroite.changerCouleur();
+			if(bulleDroite != null)bulleDroite.changerCouleur((casesVidesDroite+1)*650);
 		}
 	}
 	

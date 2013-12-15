@@ -1,4 +1,4 @@
-package bubble_blast;
+package be.ephec.bubble_blast;
 
 public class Score {
 	

@@ -1,13 +1,15 @@
-package bubble_blast;
+package be.ephec.bubble_blast;
 
 import javax.swing.SwingUtilities;
 
-public class NouveauJeu {
+import be.ephec.GUI.EcranAccueil;
+
+public class Partie {
 	
 	private int nbNiveaux;
 	private boolean modeSolo;
 	
-	public NouveauJeu(int nbNiveaux, boolean modeSolo){
+	public Partie(int nbNiveaux, boolean modeSolo){
 		this.nbNiveaux = nbNiveaux;
 		this.modeSolo = modeSolo;
 	}

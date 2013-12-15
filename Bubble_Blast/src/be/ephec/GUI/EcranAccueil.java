@@ -1,4 +1,4 @@
-package bubble_blast;
+package be.ephec.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +12,9 @@ import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
+
+import be.ephec.bubble_blast.Joueur;
+import be.ephec.reseau.*;
 
 public class EcranAccueil extends NouvelleFenetre{
 	
@@ -63,6 +66,11 @@ public class EcranAccueil extends NouvelleFenetre{
 	private void jButton2JoueursActionPerformed(ActionEvent evt) {
 		Joueur joueur = new Joueur();
 		Joueur.setModeSolo(false);
+		try {
+			ServeurBubbleBlast.initServeur();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		EcranNbParties ecranNbParties = new EcranNbParties();
 		this.setVisible(false);
 	}
