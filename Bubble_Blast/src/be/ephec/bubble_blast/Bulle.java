@@ -65,6 +65,8 @@ public class Bulle{
 					Score.addCombo();
 					couleur--;
 				}
+				animation.verifierNiveauFini();
+				animation.mettreAJourScore();
 			}
 		}, tempsAttente);
 	}
@@ -108,7 +110,6 @@ public class Bulle{
 			Bulle bulleDroite = Niveau.MesBulles.get(colonneBulleDroite+"/"+l);
 			if(bulleDroite != null)bulleDroite.changerCouleur((casesVidesDroite+1)*650);
 		}
-		animation.verifierNiveauFini();
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les

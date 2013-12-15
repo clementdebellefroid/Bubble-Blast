@@ -16,6 +16,7 @@ public class Animation{
 	private Timer timer = new Timer();
 	private Niveau niveauCourant;
 	private EcranJeu ecranJeu;
+	private boolean ecranFinJeuGenere = false;
 
 	public Animation(int NumNiveauCourant){
 		this.niveauCourant = new Niveau(NumNiveauCourant);
@@ -32,10 +33,16 @@ public class Animation{
         }
 	}
 	public void verifierNiveauFini(){
-		if(Niveau.MesBulles.isEmpty()){
+		if(Niveau.MesBulles.isEmpty() && ecranFinJeuGenere == false){
 			if(Joueur.isModeSolo()==false)Joueur.ajouterAScorePartie(ecranJeu.getScore().getScore());
 			EcranFinJeu ecranFinJeu = new EcranFinJeu(niveauCourant.getTitre(), ecranJeu);
+			ecranFinJeuGenere = true;
 		}
+	}
+	
+	public void mettreAJourScore(){
+		ecranJeu.getScore().calculerScore();
+		ecranJeu.initTextFields();
 	}
 	
 	public void genererProjectileBille(Bulle bulle, int nbCasesAParcourir, int direction){

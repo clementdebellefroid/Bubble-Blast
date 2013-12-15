@@ -49,17 +49,21 @@ public class EcranFinJeu extends javax.swing.JFrame {
 
 		this.setContentPane(finJeuLabel);
 		this.add(Box.createRigidArea(new Dimension(0,250)));
-		if(niveauFini >= Niveau.getNbNiveaux())
+		
+		if(Joueur.isModeSolo() == false) {
+			if(Niveau.getNbNiveauxCrees() <= niveauFini){
+			ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
+			this.setVisible(false);
+			ecranJeu.setVisible(false);
+			EcranResultats ecranResultat = new EcranResultats();
+			}
+		}
+		else if(niveauFini >= Niveau.getNbNiveauxCrees())
 		{
 			nivSuivant.setVisible(false);
 			this.add(Box.createRigidArea(new Dimension(124,45)));
-			if(Joueur.isModeSolo() == false) {
-				ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
-				EcranResultats ecranResultat = new EcranResultats();
-				ecranJeu.setVisible(false);
-				this.setVisible(false);
-			}
 		}
+		
 		this.add(nivSuivant);
 		if(Joueur.isModeSolo() == false)
 		{
@@ -88,20 +92,20 @@ public class EcranFinJeu extends javax.swing.JFrame {
 
 	private void jButtonNivSuivantActionPerformed(ActionEvent evt) {
 			int niveauSuivant = niveauFini+1;
-			ecranJeu.dispose();
-			EcranNiveaux.animNiveau = new Animation(niveauSuivant);
+			ecranJeu.setVisible(false);
 			this.setVisible(false);
+			EcranNiveaux.animNiveau = new Animation(niveauSuivant);
 	}
 
 	private void jButtonReessayerActionPerformed(ActionEvent evt) {
-		ecranJeu.dispose();
-		EcranNiveaux.animNiveau = new Animation(niveauFini);
+		ecranJeu.setVisible(false);
 		this.setVisible(false);
+		EcranNiveaux.animNiveau = new Animation(niveauFini);
 	}
 
 	private void jButtonMenuActionPerformed(ActionEvent evt) {
 		ecranJeu.setVisible(false);
-		EcranAccueil ecranAccueil = new EcranAccueil();
 		this.setVisible(false);
+		EcranAccueil ecranAccueil = new EcranAccueil();
 	}
 }

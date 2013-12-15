@@ -18,7 +18,7 @@ public class EcranResultats extends NouvelleFenetre{
 
 	private JTextField scoreJ1;
 	private JTextField scoreJ2;
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 	public EcranResultats(){
 		super();

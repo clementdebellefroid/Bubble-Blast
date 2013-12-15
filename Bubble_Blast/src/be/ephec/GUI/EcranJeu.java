@@ -139,9 +139,6 @@ public class EcranJeu extends NouvelleFenetre{
 			score.setCombo(0);
 			bulleCliquee.changerCouleur(0);
 			score.ajouterTouche();
-			touchesTxt.setText(""+score.getNbTouches());
-			score.calculerScore();
-			scoreTxt.setText(""+score.getScore());
 		}
 	}
 	

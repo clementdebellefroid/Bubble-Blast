@@ -67,7 +67,7 @@ public class EcranNbParties extends NouvelleFenetre{
 	
 	private void jButtonDemarrerActionPerformed(ActionEvent evt) {
 		int niveauChoisi = Niveau.getNbNiveauxCrees() - Niveau.getNbNiveaux() +1;
-		Animation ecranSuivant = new Animation(niveauChoisi);
+		EcranNiveaux.animNiveau = new Animation(niveauChoisi);
 		this.setVisible(false);
 	}
 }

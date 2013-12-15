@@ -38,11 +38,11 @@ public class Score {
 	
 	public void calculerScore(){
 		int scoreAAjouter = 0;
-		scoreAAjouter = combo * (1000/nbTouches);
+		scoreAAjouter = combo * (100/nbTouches);
 		score += scoreAAjouter;
 		if(Niveau.MesBulles.isEmpty())
 		{
-			int bonus = score * ((1000/(nbTouches)))/100 - score;
+			int bonus = score * ((100/(nbTouches)))/10 - score;
 			score += bonus;
 		}
 	}
