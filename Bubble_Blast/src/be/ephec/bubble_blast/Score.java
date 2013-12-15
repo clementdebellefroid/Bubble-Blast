@@ -40,10 +40,10 @@ public class Score {
 		int scoreAAjouter = 0;
 		scoreAAjouter = combo * (100/nbTouches);
 		score += scoreAAjouter;
-		if(Niveau.MesBulles.isEmpty())
-		{
-			int bonus = score * ((100/(nbTouches)))/10 - score;
-			score += bonus;
-		}
+	}
+	
+	public void calculerBonus(){
+		int bonus = score * ((100/(nbTouches)))/10 - score;
+		score += bonus;
 	}
 }

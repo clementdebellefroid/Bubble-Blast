@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -31,7 +30,6 @@ public class EcranFinJeu extends javax.swing.JFrame {
 		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setResizable(false);
-		setBackground(new java.awt.Color(255,255,255));
 		this.setSize(350, 200);	
 		
 		JLabel finJeuLabel = new JLabel();
@@ -52,10 +50,11 @@ public class EcranFinJeu extends javax.swing.JFrame {
 		
 		if(Joueur.isModeSolo() == false) {
 			if(Niveau.getNbNiveauxCrees() <= niveauFini){
-			ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
-			this.setVisible(false);
-			ecranJeu.setVisible(false);
-			EcranResultats ecranResultat = new EcranResultats();
+				ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
+				this.setVisible(false);
+				ecranJeu.setVisible(false);
+				EcranResultats ecranResultats = new EcranResultats();
+				ecranResultats.setVisible(true);
 			}
 		}
 		else if(niveauFini >= Niveau.getNbNiveauxCrees())

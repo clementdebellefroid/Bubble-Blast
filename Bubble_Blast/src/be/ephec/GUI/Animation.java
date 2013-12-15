@@ -33,15 +33,19 @@ public class Animation{
         }
 	}
 	public void verifierNiveauFini(){
+		mettreAJourScore();
 		if(Niveau.MesBulles.isEmpty() && ecranFinJeuGenere == false){
-			if(Joueur.isModeSolo()==false)Joueur.ajouterAScorePartie(ecranJeu.getScore().getScore());
+			ecranJeu.getScoreJeu().calculerBonus();
+			ecranJeu.initTextFields();
+			if(Joueur.isModeSolo()==false)Joueur.ajouterAScorePartie(ecranJeu.getScoreJeu().getScore());
 			EcranFinJeu ecranFinJeu = new EcranFinJeu(niveauCourant.getTitre(), ecranJeu);
+			ecranFinJeu.setVisible(true);
 			ecranFinJeuGenere = true;
 		}
 	}
 	
 	public void mettreAJourScore(){
-		ecranJeu.getScore().calculerScore();
+		ecranJeu.getScoreJeu().calculerScore();
 		ecranJeu.initTextFields();
 	}
 	

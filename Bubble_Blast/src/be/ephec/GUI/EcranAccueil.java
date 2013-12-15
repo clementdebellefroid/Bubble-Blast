@@ -40,10 +40,10 @@ public class EcranAccueil extends NouvelleFenetre{
 		deuxJoueurs.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		this.setContentPane(accueilLabel);
-		this.add(Box.createRigidArea(new Dimension(0,238)));
-		this.add(unJoueur);
-		this.add(Box.createRigidArea(new Dimension(0,20)));
-		this.add(deuxJoueurs);
+		accueilLabel.add(Box.createRigidArea(new Dimension(0,238)));
+		accueilLabel.add(unJoueur);
+		accueilLabel.add(Box.createRigidArea(new Dimension(0,20)));
+		accueilLabel.add(deuxJoueurs);
 		
 				
 		unJoueur.addActionListener(new ActionListener() {

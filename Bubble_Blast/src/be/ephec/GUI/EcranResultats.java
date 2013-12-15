@@ -7,7 +7,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,10 +14,6 @@ import javax.swing.JTextField;
 import be.ephec.bubble_blast.Joueur;
 
 public class EcranResultats extends NouvelleFenetre{
-
-	private JTextField scoreJ1;
-	private JTextField scoreJ2;
-	//private static final long serialVersionUID = 1L;
 	
 	public EcranResultats(){
 		super();
@@ -28,35 +23,36 @@ public class EcranResultats extends NouvelleFenetre{
 	public void initFenetre() {
 		
 		 this.setLocationRelativeTo(null);
-		 this.setVisible(true);
 		 
 		 JLabel classementLabel = new JLabel();
-		 classementLabel.setLayout(null);
 		 classementLabel.setIcon(new ImageIcon("bin/images/classement.jpg"));
+		 classementLabel.setLayout(null);
 		 
 		 Font font = new Font("Arial", Font.PLAIN,25);
-		 scoreJ1 = new JTextField();
-		 scoreJ1.setEditable(false);
-		 scoreJ1.setOpaque(false);
-		 scoreJ1.setBorder(null);
-		 scoreJ1.setBounds(200, 55, 110, 37);
-		 scoreJ1.setFont(font);
-		 scoreJ1.setForeground(new Color(42,137,205));
-		 scoreJ1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		 scoreJ1.setText(""+Joueur.getScorePartie());
 		 
-		/* scoreJ2 = new JTextField();
-		 scoreJ2.setEditable(false);
-		 scoreJ2.setOpaque(false);
-		 scoreJ2.setBorder(null);
-		 scoreJ2.setFont(font);
-		 scoreJ2.setForeground(new Color(42,137,205));
-		 scoreJ2.setAlignmentX(Component.CENTER_ALIGNMENT);*/
+		 JTextField scorePremier = new JTextField();
+		 scorePremier = new JTextField();
+		 scorePremier.setEditable(false);
+		 scorePremier.setOpaque(false);
+		 scorePremier.setBorder(null);
+		 scorePremier.setBounds(130, 290, 300, 37);
+		 scorePremier.setFont(font);
+		 scorePremier.setForeground(new Color(45,110,220));
+		 scorePremier.setText("Joueur 1: "+Joueur.getScorePartie()+" points");
 		 
-		 classementLabel.add(scoreJ1);
+		 JTextField scoreDeuxieme = new JTextField();
+		 scoreDeuxieme = new JTextField();
+		 scoreDeuxieme.setEditable(false);
+		 scoreDeuxieme.setOpaque(false);
+		 scoreDeuxieme.setBorder(null);
+		 scoreDeuxieme.setBounds(130, 400, 300, 37);
+		 scoreDeuxieme.setFont(font);
+		 scoreDeuxieme.setForeground(new Color(45,110,220));
+		 scoreDeuxieme.setText("Joueur 2: "+Joueur.getScorePartie()+" points");
+		 
 		 this.setContentPane(classementLabel);
-		 this.add(Box.createRigidArea(new Dimension(0,238)));
-		 /*this.add(Box.createRigidArea(new Dimension(0,20)));
-		 classementLabel.add(scoreJ2);*/
+		 classementLabel.add(scorePremier);
+		 classementLabel.add(scoreDeuxieme);
+
 	}
 }

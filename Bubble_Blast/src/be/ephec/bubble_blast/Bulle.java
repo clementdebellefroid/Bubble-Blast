@@ -66,7 +66,6 @@ public class Bulle{
 					couleur--;
 				}
 				animation.verifierNiveauFini();
-				animation.mettreAJourScore();
 			}
 		}, tempsAttente);
 	}

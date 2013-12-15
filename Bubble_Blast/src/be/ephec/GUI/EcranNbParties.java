@@ -45,7 +45,6 @@ public class EcranNbParties extends NouvelleFenetre{
 		nbPartiesLabel.add(menuParties);
 		nbPartiesLabel.add(Box.createRigidArea(new Dimension(0,100)));
 		nbPartiesLabel.add(demarrer);
-		nbPartiesLabel.add(Box.createRigidArea(new Dimension(0,150)));
 		this.add(nbPartiesLabel);
 
 		menuParties.setSelectedIndex(0);

@@ -30,22 +30,22 @@ public class EcranJeu extends NouvelleFenetre{
 	private int tailleCoteBouton = 60;
 	private MesJButton[][] tabJButton = new MesJButton[nbColonnes][nbLignes];
 	private Niveau niveauChoisi;
-	private Score score;
+	private Score scoreJeu;
 
 	public EcranJeu(Niveau niveau) {
 		super();
 		niveauChoisi = niveau;
 		initFenetre();
-		score = new Score();
+		scoreJeu = new Score();
 		initTextFields();
 	} 
 
-	public Score getScore() {
-		return score;
+	public Score getScoreJeu() {
+		return scoreJeu;
 	}
 
-	public void setScore(Score score) {
-		this.score = score;
+	public void setScoreJeu(Score scoreJeu) {
+		this.scoreJeu = scoreJeu;
 	}
 
 	private void initFenetre() {
@@ -126,8 +126,8 @@ public class EcranJeu extends NouvelleFenetre{
 
 	public void initTextFields(){
 		niveauTxt.setText(""+niveauChoisi.getTitre());
-		scoreTxt.setText(""+score.getScore());
-		touchesTxt.setText(""+score.getNbTouches());
+		scoreTxt.setText(""+scoreJeu.getScore());
+		touchesTxt.setText(""+scoreJeu.getNbTouches());
 	}
 
 	private void jButton1ActionPerformed(ActionEvent evt) {
@@ -136,9 +136,9 @@ public class EcranJeu extends NouvelleFenetre{
 		if(Niveau.MesBulles.containsKey(source.getColonne()+"/"+source.getLigne()))
 		{
 			Bulle bulleCliquee = ((Bulle) Niveau.MesBulles.get(source.getColonne()+"/"+source.getLigne()));
-			score.setCombo(0);
+			scoreJeu.setCombo(0);
+			scoreJeu.ajouterTouche();
 			bulleCliquee.changerCouleur(0);
-			score.ajouterTouche();
 		}
 	}
 	
