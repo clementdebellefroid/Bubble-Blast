@@ -2,6 +2,8 @@ package be.ephec.bubble_blast;
 
 import java.util.Hashtable;
 
+import be.ephec.GUI.Animation;
+
 public class Niveau {
 
 	private int titre;

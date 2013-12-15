@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import be.ephec.GUI.Animation;
 import be.ephec.GUI.EcranJeu;
+import be.ephec.GUI.EcranNiveaux;
 
 public class Bulle{
 
@@ -14,17 +15,12 @@ public class Bulle{
 	private int c;
 	private int l;
 	private boolean ready = false;
-	private Animation animation = new Animation(this);
+	private Animation animation;
 	
 	public Bulle(int couleur, int c, int l){
 		this.couleur = couleur;
 		this.c = c;
 		this.l = l;
-		if(couleur == 1) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeAnimation.gif"));
-		else if(couleur == 2) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleVerte.gif"));
-		else if(couleur == 3) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleJaune.gif"));
-		else if(couleur == 4) (EcranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleBleue.gif"));
-
 	}
 	
 	public int getCouleur(){
@@ -53,6 +49,7 @@ public class Bulle{
 	}
 
 	public void changerCouleur(int tempsAttente){
+		this.animation = EcranNiveaux.animNiveau;
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override
@@ -111,6 +108,7 @@ public class Bulle{
 			Bulle bulleDroite = Niveau.MesBulles.get(colonneBulleDroite+"/"+l);
 			if(bulleDroite != null)bulleDroite.changerCouleur((casesVidesDroite+1)*650);
 		}
+		animation.verifierNiveauFini();
 	}
 	
 	/*Quand une bulle Žclate, on la supprime de la Hashtable. Sont donc prŽsentes dans la Hashtable que les

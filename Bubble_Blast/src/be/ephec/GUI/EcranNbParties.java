@@ -66,9 +66,8 @@ public class EcranNbParties extends NouvelleFenetre{
 	}
 	
 	private void jButtonDemarrerActionPerformed(ActionEvent evt) {
-		System.out.println(Niveau.getNbNiveaux());
 		int niveauChoisi = Niveau.getNbNiveauxCrees() - Niveau.getNbNiveaux() +1;
-		EcranJeu ecranJeu = new EcranJeu(niveauChoisi);
+		Animation ecranSuivant = new Animation(niveauChoisi);
 		this.setVisible(false);
 	}
 }

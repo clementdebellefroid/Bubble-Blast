@@ -28,17 +28,25 @@ public class EcranJeu extends NouvelleFenetre{
 	private static int nbColonnes = 5;
 	private static int nbLignes = 6;
 	private int tailleCoteBouton = 60;
-	private static MesJButton[][] tabJButton = new MesJButton[nbColonnes][nbLignes];
+	private MesJButton[][] tabJButton = new MesJButton[nbColonnes][nbLignes];
 	private Niveau niveauChoisi;
 	private Score score;
 
-	public EcranJeu(int choixNiveau) {
+	public EcranJeu(Niveau niveau) {
 		super();
+		niveauChoisi = niveau;
 		initFenetre();
-		niveauChoisi = new Niveau(choixNiveau);
 		score = new Score();
 		initTextFields();
 	} 
+
+	public Score getScore() {
+		return score;
+	}
+
+	public void setScore(Score score) {
+		this.score = score;
+	}
 
 	private void initFenetre() {
 		this.setLocationRelativeTo(null);
@@ -112,7 +120,7 @@ public class EcranJeu extends NouvelleFenetre{
 		mainLabel.add(grilleJeuLabel, BorderLayout.CENTER);
 	}
 
-	public static MesJButton[][] getTabJButton() {
+	public MesJButton[][] getTabJButton() {
 		return tabJButton;
 	}
 
@@ -134,10 +142,6 @@ public class EcranJeu extends NouvelleFenetre{
 			touchesTxt.setText(""+score.getNbTouches());
 			score.calculerScore();
 			scoreTxt.setText(""+score.getScore());
-			if(Niveau.MesBulles.isEmpty()){
-				if(Joueur.isModeSolo()==false)Joueur.ajouterAScorePartie(score.getScore());
-				EcranFinJeu ecranFinJeu = new EcranFinJeu(niveauChoisi.getTitre(), this);
-			}
 		}
 	}
 	

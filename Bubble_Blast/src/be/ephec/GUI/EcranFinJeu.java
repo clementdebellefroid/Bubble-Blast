@@ -88,14 +88,14 @@ public class EcranFinJeu extends javax.swing.JFrame {
 
 	private void jButtonNivSuivantActionPerformed(ActionEvent evt) {
 			int niveauSuivant = niveauFini+1;
-			ecranJeu.setVisible(false);
-			ecranJeu = new EcranJeu(niveauSuivant);
+			ecranJeu.dispose();
+			EcranNiveaux.animNiveau = new Animation(niveauSuivant);
 			this.setVisible(false);
 	}
 
 	private void jButtonReessayerActionPerformed(ActionEvent evt) {
-		ecranJeu.setVisible(false);
-		ecranJeu = new EcranJeu(niveauFini);
+		ecranJeu.dispose();
+		EcranNiveaux.animNiveau = new Animation(niveauFini);
 		this.setVisible(false);
 	}
 

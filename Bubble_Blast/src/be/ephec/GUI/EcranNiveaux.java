@@ -18,6 +18,7 @@ import javax.swing.BoxLayout;
 
 public class EcranNiveaux extends NouvelleFenetre {
 	private int niveauChoisi;
+	public static Animation animNiveau;
 	
 	public EcranNiveaux(){
 		super();
@@ -63,7 +64,7 @@ public class EcranNiveaux extends NouvelleFenetre {
 		      });
 	}  
 	private void jButtonDemarrerActionPerformed(ActionEvent evt) {
-		EcranJeu ecranJeu = new EcranJeu(niveauChoisi);
+		animNiveau = new Animation(niveauChoisi);
 		this.setVisible(false);
 	}
 }
