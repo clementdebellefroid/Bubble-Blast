@@ -17,7 +17,8 @@ public class ClientBubbleBlast {
 
 	public static void initClient(String ipServer) throws Exception {
 		Joueur.setHost(false);
-		serverName = ipServer;
+		//serverName = ipServer;
+		serverName = "localhost";
 		socket = new Socket(serverName, serverPort);
 		System.out.println("Socket client: "+socket);
 		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
@@ -35,14 +36,10 @@ public class ClientBubbleBlast {
 	
 	public static int lireScoreSocket() throws Exception{
 
-		System.out.println("Client 0: ");
-			ObjectInputStream ois = new ObjectInputStream(ServeurBubbleBlast.socket.getInputStream());
-			System.out.println("Client 1: "+ois);
-			Object objetRecu = ois.readObject();
-			System.out.println("Client 2: "+objetRecu);			
-			return (Integer) objetRecu;
+		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+		Object objetRecu = ois.readObject();
+		return (Integer) objetRecu;
 	}
-
 
 	public static void main(String[] args) throws Exception {
 		initClient("");

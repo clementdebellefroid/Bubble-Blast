@@ -269,5 +269,6 @@ public class Niveau {
 		MesBulles.put(3+"/"+5, b28);
 		Bulle b29 = new Bulle(1,4,5);
 		MesBulles.put(4+"/"+5, b29);
+
 	}
 }

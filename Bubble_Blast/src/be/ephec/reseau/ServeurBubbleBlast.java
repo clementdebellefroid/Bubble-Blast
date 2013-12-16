@@ -17,9 +17,7 @@ public class ServeurBubbleBlast {
 	public static Socket socket;
 	
 	public static void initServeur() throws Exception {
-		
 			Joueur.setHost(true);
-			
 			ServerSocket s = new ServerSocket(numPort);
 			socket = s.accept();
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
@@ -27,6 +25,7 @@ public class ServeurBubbleBlast {
 			oos.writeObject(niveauAJouer);
 			EcranNiveaux.animNiveau = new Animation(niveauAJouer);
 	}
+	
 	public static void ecrireScoreSocket() throws Exception{
 		ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 		oos.flush();
@@ -37,12 +36,10 @@ public class ServeurBubbleBlast {
 
 		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 		Object objetRecu = ois.readObject();
-		System.out.println("Serv apres"+objetRecu);
 		return (Integer) objetRecu;
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		initServeur();
 	}
 }
-
