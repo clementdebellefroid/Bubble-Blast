@@ -43,14 +43,12 @@ public class ClientBubbleBlast {
 	
 	public static int lireScoreSocket() throws Exception{
 
-		//do{
 		System.out.println("Client 0: ");
 			ObjectInputStream ois = new ObjectInputStream(ServeurBubbleBlast.socket.getInputStream());
 			System.out.println("Client 1: "+ois);
 			Object objetRecu = ois.readObject();
 			System.out.println("Client 2: "+objetRecu);			
 			return (Integer) objetRecu;
-		//}while(ois == null);
 	}
 
 

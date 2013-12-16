@@ -31,7 +31,7 @@ public class EcranNiveaux extends NouvelleFenetre {
 		
 		JLabel niveauxLabel = new JLabel();
 		niveauxLabel.setLayout(new BoxLayout(niveauxLabel, BoxLayout.Y_AXIS));
-		niveauxLabel.setIcon(new ImageIcon("bin/images/niveau.jpg"));
+		niveauxLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("niveau.jpg")));
 		this.setContentPane(niveauxLabel);
 		
 		String[] items = {"Niveau 1", "Niveau 2", "Niveau 3"};
@@ -39,7 +39,7 @@ public class EcranNiveaux extends NouvelleFenetre {
 		menuNiveaux.setMaximumSize(new Dimension(100, 20));
 		menuNiveaux.setSelectedIndex(1);
 
-		JButton demarrer = new JButton(new ImageIcon("bin/images/Go.jpg"));
+		JButton demarrer = new JButton(new ImageIcon(getClass().getClassLoader().getResource("Go.jpg")));
 		demarrer.setMaximumSize(new Dimension(200, 125));
 		demarrer.setAlignmentX(Component.CENTER_ALIGNMENT);
 

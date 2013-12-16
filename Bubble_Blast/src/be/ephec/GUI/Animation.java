@@ -68,7 +68,7 @@ public class Animation{
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				ImageIcon animBille = new ImageIcon("bin/images/BilleBasHaut.gif");
+				ImageIcon animBille = new ImageIcon(getClass().getClassLoader().getResource("BilleBasHaut.gif"));
 				animBille.getImage().flush();
 				(ecranJeu.getTabJButton()[c][l]).setIcon(animBille);
 			}
@@ -79,7 +79,7 @@ public class Animation{
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				ImageIcon animBille = new ImageIcon("bin/images/BilleHautBas.gif");
+				ImageIcon animBille = new ImageIcon(getClass().getClassLoader().getResource("BilleHautBas.gif"));
 				animBille.getImage().flush();
 				(ecranJeu.getTabJButton()[c][l]).setIcon(animBille);
 			}
@@ -90,7 +90,7 @@ public class Animation{
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				ImageIcon animBille = new ImageIcon("bin/images/BilleDroiteGauche.gif");
+				ImageIcon animBille = new ImageIcon(getClass().getClassLoader().getResource("BilleDroiteGauche.gif"));
 				animBille.getImage().flush();
 				(ecranJeu.getTabJButton()[c][l]).setIcon(animBille);
 			}
@@ -101,7 +101,7 @@ public class Animation{
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				ImageIcon animBille = new ImageIcon("bin/images/BilleGaucheDroite.gif");
+				ImageIcon animBille = new ImageIcon(getClass().getClassLoader().getResource("BilleGaucheDroite.gif"));
 				animBille.getImage().flush();
 				(ecranJeu.getTabJButton()[c][l]).setIcon(animBille);
 			}
@@ -119,23 +119,23 @@ public class Animation{
 	}
 
 	public void bulleRouge(int c, int l){
-		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleRougeAnimation.gif"));
+		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("BulleRougeAnimation.gif")));
 	}	
 
 	public void bulleVerte(int c, int l){
-		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleVerte.gif"));
+		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("BulleVerte.gif")));
 	}	
 
 	public void bulleJaune(int c, int l){
-		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleJaune.gif"));
+		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("BulleJaune.gif")));
 	}	
 	
 	public void bulleBleue(int c, int l){
-		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon("bin/images/BulleBleue.gif"));
+		(ecranJeu.getTabJButton()[c][l]).setIcon(new ImageIcon(getClass().getClassLoader().getResource("BulleBleue.gif")));
 	}	
 
 	public void eclatement(int c, int l){
-		ImageIcon animEclate = new ImageIcon("bin/images/BulleRougeEclateAnim.gif");
+		ImageIcon animEclate = new ImageIcon(getClass().getClassLoader().getResource("BulleRougeEclateAnim.gif"));
 		animEclate.getImage().flush();
 		(ecranJeu.getTabJButton()[c][l]).setIcon(animEclate);
 	}

@@ -19,33 +19,19 @@ import be.ephec.reseau.ServeurBubbleBlast;
 
 public class EcranResultats extends NouvelleFenetre{
 	
-	public EcranResultats(){
+	public EcranResultats(int scoreAutreJoueur){
 		super();
 		try {
-			initFenetre();
+			initFenetre(scoreAutreJoueur);
 		} catch (Exception e) {
 		}
 	}
 	
-	public void initFenetre() throws Exception{
-		int scoreAutreJoueur = 0;
+	public void initFenetre(int scoreAutreJoueur) throws Exception{
 		String nomGagnant = "";
 		String nomPerdant = "";
 		int scoreGagnant = 0;
 		int scorePerdant = 0;
-		
-		if(Joueur.isHost()){
-			try {
-				ServeurBubbleBlast.ecrireScoreSocket();
-				scoreAutreJoueur = ServeurBubbleBlast.lireScoreSocket();
-			} catch (Exception e) {}
-		}
-		else{
-			try {
-				ClientBubbleBlast.ecrireScoreSocket();
-				scoreAutreJoueur = ClientBubbleBlast.lireScoreSocket();
-			} catch (Exception e) {}
-		}
 
 		if(scoreAutreJoueur>Joueur.getScorePartie()){
 			nomGagnant = "Rival : ";
@@ -62,7 +48,7 @@ public class EcranResultats extends NouvelleFenetre{
 		 this.setLocationRelativeTo(null);
 		 
 		 JLabel classementLabel = new JLabel();
-		 classementLabel.setIcon(new ImageIcon("bin/images/classement.jpg"));
+		 classementLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("classement.jpg")));
 		 classementLabel.setLayout(null);
 		 
 		 Font font = new Font("Arial", Font.PLAIN,25);

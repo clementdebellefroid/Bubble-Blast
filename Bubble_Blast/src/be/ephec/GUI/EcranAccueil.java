@@ -29,13 +29,13 @@ public class EcranAccueil extends NouvelleFenetre{
 	    
 	    JLabel accueilLabel = new JLabel();
 	    accueilLabel.setLayout(new BoxLayout(accueilLabel, BoxLayout.Y_AXIS));
-	    accueilLabel.setIcon(new ImageIcon("bin/images/accueil.jpg"));
+	    accueilLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("accueil.jpg")));
 	   
-	    JButton unJoueur = new JButton((new ImageIcon("bin/images/1joueur.jpg")));
+	    JButton unJoueur = new JButton(new ImageIcon(getClass().getClassLoader().getResource("1joueur.jpg")));
 		unJoueur.setMaximumSize(new Dimension(200, 80));
 		unJoueur.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		JButton deuxJoueurs = new JButton((new ImageIcon("bin/images/2joueurs.jpg")));
+		JButton deuxJoueurs = new JButton(new ImageIcon(getClass().getClassLoader().getResource("2joueurs.jpg")));
 		deuxJoueurs.setMaximumSize(new Dimension(200, 80));
 		deuxJoueurs.setAlignmentX(Component.CENTER_ALIGNMENT);
 

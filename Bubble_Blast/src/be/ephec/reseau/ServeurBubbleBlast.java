@@ -17,6 +17,7 @@ public class ServeurBubbleBlast {
 	public static Socket socket;
 	
 	public static void initServeur() throws Exception {
+		
 			Joueur.setHost(true);
 			
 			ServerSocket s = new ServerSocket(numPort);
@@ -33,14 +34,11 @@ public class ServeurBubbleBlast {
 	}
 	
 	public static int lireScoreSocket() throws Exception{
-		Object objetRecu = null;
-		System.out.println("Serv avant"+objetRecu);
-		do{
+
 		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-		objetRecu = ois.readObject();
+		Object objetRecu = ois.readObject();
 		System.out.println("Serv apres"+objetRecu);
 		return (Integer) objetRecu;
-		}while(objetRecu == null);
 	}
 	
 	public static void main(String[] args) throws Exception {

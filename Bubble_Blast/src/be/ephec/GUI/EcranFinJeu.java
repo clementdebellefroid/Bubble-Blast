@@ -33,16 +33,16 @@ public class EcranFinJeu extends javax.swing.JFrame {
 		this.setSize(350, 200);	
 		
 		JLabel finJeuLabel = new JLabel();
-		finJeuLabel.setIcon(new ImageIcon("bin/images/popupLabel.jpg"));
+		finJeuLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("popupLabel.jpg")));
 		finJeuLabel.setLayout(new FlowLayout());
 
-		JButton nivSuivant = new JButton(new ImageIcon("bin/images/niveauSuivantButton.jpg"));
+		JButton nivSuivant = new JButton(new ImageIcon(getClass().getClassLoader().getResource("niveauSuivantButton.jpg")));
 		nivSuivant.setPreferredSize(new Dimension(120, 45));
 
-		JButton reessayer = new JButton(new ImageIcon("bin/images/reessayerButton.jpg"));
+		JButton reessayer = new JButton(new ImageIcon(getClass().getClassLoader().getResource("reessayerButton.jpg")));
 		reessayer.setPreferredSize(new Dimension(100, 45));
 	
-		JButton menu = new JButton(new ImageIcon("bin/images/menuButton.jpg"));
+		JButton menu = new JButton(new ImageIcon(getClass().getClassLoader().getResource("menuButton.jpg")));
 		menu.setPreferredSize(new Dimension(85, 45));
 
 		this.setContentPane(finJeuLabel);
@@ -53,8 +53,20 @@ public class EcranFinJeu extends javax.swing.JFrame {
 				ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
 				this.setVisible(false);
 				ecranJeu.setVisible(false);
-				
-				EcranResultats ecranResultats = new EcranResultats();
+				int scoreAutreJoueur = 0;
+				if(Joueur.isHost()){
+					try {
+						ServeurBubbleBlast.ecrireScoreSocket();
+						scoreAutreJoueur = ServeurBubbleBlast.lireScoreSocket();
+					} catch (Exception e) {}
+				}
+				else{
+					try {
+						ClientBubbleBlast.ecrireScoreSocket();
+						scoreAutreJoueur = ClientBubbleBlast.lireScoreSocket();
+					} catch (Exception e) {}
+				}
+				EcranResultats ecranResultats = new EcranResultats(scoreAutreJoueur);
 				ecranResultats.setVisible(true);
 			}
 		}

@@ -56,7 +56,7 @@ public class EcranJeu extends NouvelleFenetre{
 		mainLabel.setLayout(new BorderLayout());
 		
 		JLabel infoLabel = new JLabel();
-		infoLabel.setIcon(new ImageIcon("bin/images/infoLabel.jpg"));
+		infoLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("infoLabel.jpg")));
 		infoLabel.setPreferredSize(new Dimension(500,100));
 		infoLabel.setLayout(null);
 		
@@ -94,7 +94,7 @@ public class EcranJeu extends NouvelleFenetre{
 
 		GridBagLayout grilleJeuLabelLayout = new GridBagLayout();
 		grilleJeuLabel.setLayout(grilleJeuLabelLayout);
-		grilleJeuLabel.setIcon(new ImageIcon("bin/images/mainLabel.jpg"));
+		grilleJeuLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("mainLabel.jpg")));
 		for(int c=0; c<nbColonnes; c++)
 		{
 			for(int l=0; l<nbLignes; l++)
@@ -102,7 +102,7 @@ public class EcranJeu extends NouvelleFenetre{
 				tabJButton[c][l] = new MesJButton(c,l);
 				grilleJeuLabel.add(tabJButton[c][l], new GridBagConstraints(c, l, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				tabJButton[c][l].setPreferredSize(new Dimension(tailleCoteBouton, tailleCoteBouton));
-				tabJButton[c][l].setIcon(new ImageIcon("bin/images/CaseVide.gif"));
+				tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("CaseVide.gif")));
 				tabJButton[c][l].setBorder(BorderFactory.createCompoundBorder());
 				tabJButton[c][l].setOpaque(false);
 				tabJButton[c][l].setContentAreaFilled(false);
@@ -148,7 +148,7 @@ public class EcranJeu extends NouvelleFenetre{
 			for(int l=0; l<nbLignes; l++)
 			{
 				if(Niveau.MesBulles.containsKey(c+"/"+l));
-				else tabJButton[c][l].setIcon(new ImageIcon("bin/images/CaseVide.gif"));
+				else tabJButton[c][l].setIcon(new ImageIcon(getClass().getClassLoader().getResource("CaseVide.gif")));
 			}
 		}
 	}

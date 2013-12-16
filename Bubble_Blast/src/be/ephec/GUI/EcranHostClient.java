@@ -28,20 +28,20 @@ public class EcranHostClient extends NouvelleFenetre{
 	    
 	    JLabel hebergeurLabel = new JLabel();
 	    hebergeurLabel.setLayout(new BoxLayout(hebergeurLabel, BoxLayout.Y_AXIS));
-	    //hebergeurLabel.setIcon(new ImageIcon("bin/images/accueil.jpg"));
+	    hebergeurLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("hostClient.jpg")));
 	   
-	    JButton hebergeur = new JButton("Hebergeur");
-	    hebergeur.setMaximumSize(new Dimension(200, 80));
+	    JButton hebergeur = new JButton(new ImageIcon(getClass().getClassLoader().getResource("hebergeur.jpg")));
+	    hebergeur.setMaximumSize(new Dimension(200, 100));
 	    hebergeur.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		JButton client = new JButton("Client");
-		client.setMaximumSize(new Dimension(200, 80));
+		JButton client = new JButton(new ImageIcon(getClass().getClassLoader().getResource("client.jpg")));
+		client.setMaximumSize(new Dimension(200, 100));
 		client.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		this.setContentPane(hebergeurLabel);
-		hebergeurLabel.add(Box.createRigidArea(new Dimension(0,238)));
+		hebergeurLabel.add(Box.createRigidArea(new Dimension(0,185)));
 		hebergeurLabel.add(hebergeur);
-		hebergeurLabel.add(Box.createRigidArea(new Dimension(0,20)));
+		hebergeurLabel.add(Box.createRigidArea(new Dimension(0,50)));
 		hebergeurLabel.add(client);
 		
 				
@@ -58,14 +58,9 @@ public class EcranHostClient extends NouvelleFenetre{
 	}
 	
 	private void jButtonHebergeurActionPerformed(ActionEvent evt) {
+		this.setVisible(false);
 		EcranNbParties ecranNbParties = new EcranNbParties();
 		ecranNbParties.setVisible(true);
-		try {
-			ServeurBubbleBlast.initServeur();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		this.setVisible(false);
 	}
 	
 	private void jButtonClientActionPerformed(ActionEvent evt) {
