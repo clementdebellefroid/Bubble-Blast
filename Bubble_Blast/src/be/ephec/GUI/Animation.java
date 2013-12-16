@@ -21,6 +21,7 @@ public class Animation{
 	public Animation(int NumNiveauCourant){
 		this.niveauCourant = new Niveau(NumNiveauCourant);
 		this.ecranJeu = new EcranJeu(niveauCourant);
+		ecranJeu.setVisible(true);
 		genererBulles();
 	}
 

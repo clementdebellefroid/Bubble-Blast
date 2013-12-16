@@ -66,12 +66,7 @@ public class EcranAccueil extends NouvelleFenetre{
 	private void jButton2JoueursActionPerformed(ActionEvent evt) {
 		Joueur joueur = new Joueur();
 		Joueur.setModeSolo(false);
-		try {
-			ServeurBubbleBlast.initServeur();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		EcranNbParties ecranNbParties = new EcranNbParties();
+		EcranHostClient ecranHostClient = new EcranHostClient();
 		this.setVisible(false);
 	}
 }

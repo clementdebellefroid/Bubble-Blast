@@ -1,6 +1,7 @@
 package be.ephec.GUI;
 
 import be.ephec.bubble_blast.*;
+import be.ephec.reseau.ServeurBubbleBlast;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -8,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Random;
 
 import javax.swing.Box;
@@ -62,11 +66,15 @@ public class EcranNbParties extends NouvelleFenetre{
 				jButtonDemarrerActionPerformed(evt);
 			}
 		});
+		
+		this.setVisible(false);
+		int niveauChoisi = Niveau.getNbNiveauxCrees() - Niveau.getNbNiveaux() +1;
+		ServeurBubbleBlast.niveauAJouer = niveauChoisi;
 	}
 	
 	private void jButtonDemarrerActionPerformed(ActionEvent evt) {
-		int niveauChoisi = Niveau.getNbNiveauxCrees() - Niveau.getNbNiveaux() +1;
-		EcranNiveaux.animNiveau = new Animation(niveauChoisi);
 		this.setVisible(false);
+		int niveauChoisi = Niveau.getNbNiveauxCrees() - Niveau.getNbNiveaux() +1;
+		ServeurBubbleBlast.niveauAJouer = niveauChoisi;
 	}
 }

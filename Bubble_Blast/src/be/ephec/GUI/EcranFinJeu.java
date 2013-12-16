@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import be.ephec.bubble_blast.Joueur;
 import be.ephec.bubble_blast.Niveau;
 import be.ephec.reseau.ClientBubbleBlast;
+import be.ephec.reseau.ServeurBubbleBlast;
 
 public class EcranFinJeu extends javax.swing.JFrame {
 
@@ -52,6 +53,7 @@ public class EcranFinJeu extends javax.swing.JFrame {
 				ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
 				this.setVisible(false);
 				ecranJeu.setVisible(false);
+				
 				EcranResultats ecranResultats = new EcranResultats();
 				ecranResultats.setVisible(true);
 			}

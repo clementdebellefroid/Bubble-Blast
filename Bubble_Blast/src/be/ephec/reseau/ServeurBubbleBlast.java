@@ -5,31 +5,44 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import be.ephec.GUI.Animation;
+import be.ephec.GUI.EcranNbParties;
+import be.ephec.GUI.EcranNiveaux;
 import be.ephec.bubble_blast.*;
 
 public class ServeurBubbleBlast {
 
 	private static int numPort = 2013;
+	public static int niveauAJouer;
+	public static Socket socket;
 	
 	public static void initServeur() throws Exception {
-		
-		ServerSocket s = new ServerSocket(numPort);
-		System.out.println("Socket serveur: "+s);
-		Socket socket = s.accept();
-		System.out.println("Le serveur a accepté la connection: "+socket);
+			Joueur.setHost(true);
+			
+			ServerSocket s = new ServerSocket(numPort);
+			socket = s.accept();
+			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+			oos.flush();
+			oos.writeObject(niveauAJouer);
+			EcranNiveaux.animNiveau = new Animation(niveauAJouer);
+	}
+	public static void ecrireScoreSocket() throws Exception{
 		ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 		oos.flush();
-		ObjectInputStream  ois = new ObjectInputStream(socket.getInputStream());
-		System.out.println("Le serveur a établi la connection.");
-		String pret = "Prêt à commencer une partie.";
-		oos.writeObject(pret);
-		oos.flush();
-		System.out.println("Le serveur a transmis les données: "+pret);
-		Object objetRecu = ois.readObject();
-		String donneeRecue = (String) objetRecu;
-
-		System.out.println("Le serveur a reçu les données: " +donneeRecue);
+		oos.writeObject(Joueur.getScorePartie());
 	}
+	
+	public static int lireScoreSocket() throws Exception{
+		Object objetRecu = null;
+		System.out.println("Serv avant"+objetRecu);
+		do{
+		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+		objetRecu = ois.readObject();
+		System.out.println("Serv apres"+objetRecu);
+		return (Integer) objetRecu;
+		}while(objetRecu == null);
+	}
+	
 	public static void main(String[] args) throws Exception {
 		initServeur();
 	}

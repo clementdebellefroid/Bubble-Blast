@@ -78,6 +78,7 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesDessus, 1);
 		if(ligneBulleDessus != -1){
 			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+ligneBulleDessus);
+			if(bulleDessus.getCouleur()==1) Niveau.MesBulles.remove(c+"/"+ligneBulleDessus);
 			if(bulleDessus != null) bulleDessus.changerCouleur((casesVidesDessus+1)*650);
 		}
 		
@@ -87,6 +88,7 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesDessous, 2);
 		if(ligneBulleDessous != -1){
 			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+ligneBulleDessous);
+			if(bulleDessous.getCouleur()==1) Niveau.MesBulles.remove(c+"/"+ligneBulleDessous);
 			if(bulleDessous != null)bulleDessous.changerCouleur((casesVidesDessous+1)*650);
 		}
 		
@@ -96,6 +98,7 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesGauche, 3);
 		if(colonneBulleGauche != -1){
 			Bulle bulleGauche = Niveau.MesBulles.get(colonneBulleGauche+"/"+l);
+			if(bulleGauche.getCouleur()==1) Niveau.MesBulles.remove(colonneBulleGauche+"/"+l);
 			if(bulleGauche != null)bulleGauche.changerCouleur((casesVidesGauche+1)*650);
 		}
 		
@@ -105,6 +108,7 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesDroite, 4);
 		if(colonneBulleDroite != -1){
 			Bulle bulleDroite = Niveau.MesBulles.get(colonneBulleDroite+"/"+l);
+			if(bulleDroite.getCouleur()==1) Niveau.MesBulles.remove(colonneBulleDroite+"/"+l);
 			if(bulleDroite != null)bulleDroite.changerCouleur((casesVidesDroite+1)*650);
 		}
 	}
