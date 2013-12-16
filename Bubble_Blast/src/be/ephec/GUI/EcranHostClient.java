@@ -64,11 +64,8 @@ public class EcranHostClient extends NouvelleFenetre{
 	}
 	
 	private void jButtonClientActionPerformed(ActionEvent evt) {
-		try {
-			ClientBubbleBlast.initClient();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		this.setVisible(false);
+		EcranChoixIp ecranChoixp = new EcranChoixIp();
+		ecranChoixp.setVisible(true);
 	}
 }

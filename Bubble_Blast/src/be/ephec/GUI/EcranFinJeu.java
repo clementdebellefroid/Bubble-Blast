@@ -50,7 +50,6 @@ public class EcranFinJeu extends javax.swing.JFrame {
 		
 		if(Joueur.isModeSolo() == false) {
 			if(Niveau.getNbNiveauxCrees() <= niveauFini){
-				ClientBubbleBlast.setScoreJoueur1(Joueur.getScorePartie());
 				this.setVisible(false);
 				ecranJeu.setVisible(false);
 				int scoreAutreJoueur = 0;
@@ -58,16 +57,18 @@ public class EcranFinJeu extends javax.swing.JFrame {
 					try {
 						ServeurBubbleBlast.ecrireScoreSocket();
 						scoreAutreJoueur = ServeurBubbleBlast.lireScoreSocket();
+						EcranResultats ecranResultats = new EcranResultats(scoreAutreJoueur);
+						ecranResultats.setVisible(true);
 					} catch (Exception e) {}
 				}
 				else{
 					try {
 						ClientBubbleBlast.ecrireScoreSocket();
 						scoreAutreJoueur = ClientBubbleBlast.lireScoreSocket();
+						EcranResultats ecranResultats = new EcranResultats(scoreAutreJoueur);
+						ecranResultats.setVisible(true);
 					} catch (Exception e) {}
 				}
-				EcranResultats ecranResultats = new EcranResultats(scoreAutreJoueur);
-				ecranResultats.setVisible(true);
 			}
 		}
 		else if(niveauFini >= Niveau.getNbNiveauxCrees())

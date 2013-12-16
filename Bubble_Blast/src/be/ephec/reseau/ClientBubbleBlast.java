@@ -2,6 +2,7 @@ package be.ephec.reseau;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Arrays;
 
@@ -10,22 +11,13 @@ import be.ephec.GUI.EcranNiveaux;
 import be.ephec.bubble_blast.*;
 
 public class ClientBubbleBlast {
-	private static String serverName = "localhost"; //remplacer par ip de l'host
+	private static String serverName = "";
 	private static int serverPort = 2013;
-	private static int scoreJoueur1;
 	public static Socket socket;
 
-	public static int getScoreJoueur1() {
-		return scoreJoueur1;
-	}
-
-	public static void setScoreJoueur1(int nouveauScore) {
-		scoreJoueur1 = nouveauScore;
-	}
-
-	public static void initClient() throws Exception {
+	public static void initClient(String ipServer) throws Exception {
 		Joueur.setHost(false);
-
+		serverName = ipServer;
 		socket = new Socket(serverName, serverPort);
 		System.out.println("Socket client: "+socket);
 		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
@@ -53,6 +45,6 @@ public class ClientBubbleBlast {
 
 
 	public static void main(String[] args) throws Exception {
-		initClient();
+		initClient("");
 	}
 }
