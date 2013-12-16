@@ -39,9 +39,15 @@ public class EcranResultats extends NouvelleFenetre{
 			scoreGagnant = scoreAutreJoueur;
 			scorePerdant = Joueur.getScorePartie();
 		}
-		else{
+		else if(scoreAutreJoueur<Joueur.getScorePartie()){
 			nomGagnant = "Vous : ";
 			nomPerdant = "Rival : ";
+			scoreGagnant = Joueur.getScorePartie();
+			scorePerdant = scoreAutreJoueur;
+		}
+		else{
+			nomGagnant = "Egalite : ";
+			nomPerdant = "Egalite : ";
 			scoreGagnant = Joueur.getScorePartie();
 			scorePerdant = scoreAutreJoueur;
 		}

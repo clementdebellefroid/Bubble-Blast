@@ -14,7 +14,7 @@ public class Bulle{
 	private int couleur;
 	private int c;
 	private int l;
-	private boolean ready = false;
+	private boolean explosionEnCours = false;
 	private Animation animation;
 	
 	public Bulle(int couleur, int c, int l){
@@ -40,12 +40,12 @@ public class Bulle{
 	}
 	
 	
-	public boolean isReady() {
-		return ready;
+	public boolean isExplosionEnCours() {
+		return explosionEnCours;
 	}
 
-	public void setReady(boolean ready) {
-		this.ready = ready;
+	public void setExplosionEnCours(boolean explosionEnCours) {
+		this.explosionEnCours = explosionEnCours;
 	}
 
 	public void changerCouleur(int tempsAttente){
@@ -78,8 +78,12 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesDessus, 1);
 		if(ligneBulleDessus != -1){
 			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+ligneBulleDessus);
-			if(bulleDessus.getCouleur()==1) Niveau.MesBulles.remove(c+"/"+ligneBulleDessus);
-			if(bulleDessus != null) bulleDessus.changerCouleur((casesVidesDessus+1)*650);
+			if(bulleDessus.getCouleur()==1) {
+				Niveau.MesBulles.remove(c+"/"+ligneBulleDessus);
+				bulleDessus.explosionEnCours = true;
+				bulleDessus.changerCouleur((casesVidesDessus+1)*650);
+			}
+			if((bulleDessus != null) && (bulleDessus.explosionEnCours == false)) bulleDessus.changerCouleur((casesVidesDessus+1)*650);
 		}
 		
 		int ligneBulleDessous = lBulleDessous(c, l);
@@ -88,8 +92,12 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesDessous, 2);
 		if(ligneBulleDessous != -1){
 			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+ligneBulleDessous);
-			if(bulleDessous.getCouleur()==1) Niveau.MesBulles.remove(c+"/"+ligneBulleDessous);
-			if(bulleDessous != null)bulleDessous.changerCouleur((casesVidesDessous+1)*650);
+			if(bulleDessous.getCouleur()==1){
+				Niveau.MesBulles.remove(c+"/"+ligneBulleDessous);
+				bulleDessous.explosionEnCours = true;
+				bulleDessous.changerCouleur((casesVidesDessous+1)*650);
+			}
+			if((bulleDessous != null) && (bulleDessous.explosionEnCours == false))bulleDessous.changerCouleur((casesVidesDessous+1)*650);
 		}
 		
 		int colonneBulleGauche = cBulleGauche(c, l);
@@ -98,8 +106,12 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesGauche, 3);
 		if(colonneBulleGauche != -1){
 			Bulle bulleGauche = Niveau.MesBulles.get(colonneBulleGauche+"/"+l);
-			if(bulleGauche.getCouleur()==1) Niveau.MesBulles.remove(colonneBulleGauche+"/"+l);
-			if(bulleGauche != null)bulleGauche.changerCouleur((casesVidesGauche+1)*650);
+			if(bulleGauche.getCouleur()==1){
+				Niveau.MesBulles.remove(colonneBulleGauche+"/"+l);
+				bulleGauche.explosionEnCours = true;
+				bulleGauche.changerCouleur((casesVidesGauche+1)*650);
+			}
+			if((bulleGauche != null) && (bulleGauche.explosionEnCours == false))bulleGauche.changerCouleur((casesVidesGauche+1)*650);
 		}
 		
 		int colonneBulleDroite = cBulleDroite(c, l);
@@ -108,8 +120,12 @@ public class Bulle{
 		animation.genererProjectileBille(this, casesVidesDroite, 4);
 		if(colonneBulleDroite != -1){
 			Bulle bulleDroite = Niveau.MesBulles.get(colonneBulleDroite+"/"+l);
-			if(bulleDroite.getCouleur()==1) Niveau.MesBulles.remove(colonneBulleDroite+"/"+l);
-			if(bulleDroite != null)bulleDroite.changerCouleur((casesVidesDroite+1)*650);
+			if(bulleDroite.getCouleur()==1){
+				Niveau.MesBulles.remove(colonneBulleDroite+"/"+l);
+				bulleDroite.explosionEnCours = true;
+				bulleDroite.changerCouleur((casesVidesDroite+1)*650);
+			}
+			if((bulleDroite != null) && (bulleDroite.explosionEnCours == false))bulleDroite.changerCouleur((casesVidesDroite+1)*650);
 		}
 	}
 	

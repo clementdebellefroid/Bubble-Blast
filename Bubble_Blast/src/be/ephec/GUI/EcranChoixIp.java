@@ -37,7 +37,7 @@ public class EcranChoixIp extends NouvelleFenetre{
 
 		JLabel choixIpLabel = new JLabel();
 		choixIpLabel.setLayout(new BoxLayout(choixIpLabel, BoxLayout.Y_AXIS));
-		choixIpLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("nbparties.jpg")));
+		choixIpLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("ipServeur.jpg")));
 		
 		Font font = new Font("Arial", Font.PLAIN,25);
 		ipHostTxt = new JTextField("");
