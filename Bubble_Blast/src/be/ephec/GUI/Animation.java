@@ -39,11 +39,14 @@ public class Animation{
 			ecranJeu.initTextFields();
 			if(Joueur.isModeSolo()==false)Joueur.ajouterAScorePartie(ecranJeu.getScoreJeu().getScore());
 			EcranFinJeu ecranFinJeu = new EcranFinJeu(niveauCourant.getTitre(), ecranJeu);
-			ecranFinJeu.setVisible(true);
+			if((Joueur.isModeSolo() == false) && (Niveau.getNbNiveauxCrees() <= niveauCourant.getTitre())){
+				ecranFinJeu.setVisible(false);
+			}
+			else ecranFinJeu.setVisible(true);
 			ecranFinJeuGenere = true;
 		}
 	}
-	
+
 	public void mettreAJourScore(){
 		ecranJeu.getScoreJeu().calculerScore();
 		ecranJeu.initTextFields();

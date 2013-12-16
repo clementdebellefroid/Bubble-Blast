@@ -75,36 +75,34 @@ public class Bulle{
 		int ligneBulleDessus = lBulleDessus(c, l);
 		int casesVidesDessus = l - ligneBulleDessus - 1;
 		if(ligneBulleDessus == -1) casesVidesDessus = l;
-
-		int ligneBulleDessous = lBulleDessous(c, l);
-		int casesVidesDessous = ligneBulleDessous - l - 1;
-		if(ligneBulleDessous == -1) casesVidesDessous = 5 - l;
-		
-		int colonneBulleGauche = cBulleGauche(c, l);
-		int casesVidesGauche = c - colonneBulleGauche - 1;
-		if(colonneBulleGauche == -1) casesVidesGauche = c;
-		
-		int colonneBulleDroite = cBulleDroite(c, l);
-		int casesVidesDroite = colonneBulleDroite - c - 1;
-		if(colonneBulleDroite == -1) casesVidesDroite = 4 - c;
-		
 		animation.genererProjectileBille(this, casesVidesDessus, 1);
-		animation.genererProjectileBille(this, casesVidesDessous, 2);
-		animation.genererProjectileBille(this, casesVidesGauche, 3);
-		animation.genererProjectileBille(this, casesVidesDroite, 4);
-		
 		if(ligneBulleDessus != -1){
 			Bulle bulleDessus = Niveau.MesBulles.get(c+"/"+ligneBulleDessus);
 			if(bulleDessus != null) bulleDessus.changerCouleur((casesVidesDessus+1)*650);
 		}
+		
+		int ligneBulleDessous = lBulleDessous(c, l);
+		int casesVidesDessous = ligneBulleDessous - l - 1;
+		if(ligneBulleDessous == -1) casesVidesDessous = 5 - l;
+		animation.genererProjectileBille(this, casesVidesDessous, 2);
 		if(ligneBulleDessous != -1){
 			Bulle bulleDessous = Niveau.MesBulles.get(c+"/"+ligneBulleDessous);
 			if(bulleDessous != null)bulleDessous.changerCouleur((casesVidesDessous+1)*650);
 		}
+		
+		int colonneBulleGauche = cBulleGauche(c, l);
+		int casesVidesGauche = c - colonneBulleGauche - 1;
+		if(colonneBulleGauche == -1) casesVidesGauche = c;
+		animation.genererProjectileBille(this, casesVidesGauche, 3);
 		if(colonneBulleGauche != -1){
 			Bulle bulleGauche = Niveau.MesBulles.get(colonneBulleGauche+"/"+l);
 			if(bulleGauche != null)bulleGauche.changerCouleur((casesVidesGauche+1)*650);
 		}
+		
+		int colonneBulleDroite = cBulleDroite(c, l);
+		int casesVidesDroite = colonneBulleDroite - c - 1;
+		if(colonneBulleDroite == -1) casesVidesDroite = 4 - c;
+		animation.genererProjectileBille(this, casesVidesDroite, 4);
 		if(colonneBulleDroite != -1){
 			Bulle bulleDroite = Niveau.MesBulles.get(colonneBulleDroite+"/"+l);
 			if(bulleDroite != null)bulleDroite.changerCouleur((casesVidesDroite+1)*650);

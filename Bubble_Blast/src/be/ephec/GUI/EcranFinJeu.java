@@ -28,7 +28,6 @@ public class EcranFinJeu extends javax.swing.JFrame {
 	private void initFenetre() {
 		this.setLocationRelativeTo(null);
 		this.setUndecorated(true);
-		this.setVisible(true);
 		this.setResizable(false);
 		this.setSize(350, 200);	
 		
